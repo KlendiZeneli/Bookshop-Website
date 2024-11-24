@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Flow</title>
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+    <header>
+        <span data-fn="app.app.cart.viewcart" data-ev="click" class="back"></span>
+        <h2 id="page-title">My cart </address></h2>
+        <span data-fn="app.app.cart.close" data-ev="click" class="close"></span>
+    </header>
+
+    <div class="container">
+        <div id="cart-view">
+            <div id="cart-items"></div>
+            <div class="summary-box">
+                <div id="price-summary"></div>
+            </div>
+            <div class="confirmation-button-container">
+            <button id="checkout-button" class="button-confirmation">Finish your order</button>
+            </div>
+        </div>
+
+        <div id="shipping-view" style="display: none;">
+            <div class="form-container">
+                <p class="info-text">
+                    Choose a shipping address or pick up items in store with no shipping costs. 
+                    If you select a delivery city/area then the shipping cost will be calculated automatically.
+                </p>
+                <div class="button-group">
+                    <button id="delivery-button" class="button-primary">Delivery form </button>
+                    <button id="pickup-button" class="button-secondary">Store pickup form</button>
+                </div>
+                
+                <div id="delivery-form" class="shipping-form">
+                    <div class="form-group">
+                        <label for="state">City</label>
+                        <select id="state" required>
+                            <option value="">Select your city </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Your address</address></label>
+                        <input type="text" id="address" placeholder="Shipping address" required>
+                    </div>
+                </div>
+
+                <div id="pickup-form" class="shipping-form" style="display: none;">
+                    <div class="form-group">
+                        <label for="store">Store pickup</label>
+                        <select id="store" required>
+                            <option value="">Select the shop</option>
+                            <option value="store1">Dyqani 1 - Qendra</option>
+                            <option value="store2">Dyqani 2 - Blloku</option>
+                            <option value="store3">Dyqani 3 - Kombinat</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="summary-box">
+                <div id="shipping-price-summary"></div>
+            </div>
+            <div class="confirmation-button-container">
+                <button id="billing-button" class="button-confirmation">Confirm purchase</button>
+                </div>        
+            </div>
+
+        <div id="billing-view" style="display: none;">
+            <div class="form-container">
+                <p class="info-text">
+                    The following data will be used to produce the invoice and confirm the purchase.
+                    Also, if you have defined an address for sending the order, 
+                    then this data will be shared with the mail.
+                </p>
+                <form id="billing-form" class="billing-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstname">First name *</label>
+                            <input type="text" id="firstname" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Last name</label>
+                            <input type="text" id="lastname" placeholder="Your last name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone number *</label>
+                            <input type="tel" id="phone" placeholder="Your phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Your email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Notes regarding your order</label>
+                        <textarea id="notes" placeholder="Put notes or necessary information about the items or their delivery in this field."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="summary-box">
+                <div id="billing-price-summary"></div>
+            </div>
+            <div class="confirmation-button-container">
+                <button id="payment-button" class="button-confirmation">Payment</button>
+                </div>
+        </div>
+    </div>
+    <div id="payment-view" style="display: none;">
+        <div class="form-container">
+            <p class="info-text">
+                Please select your payment method.
+            </p>
+            
+            <div class="payment-methods">
+                <button class="payment-method" data-method="cash">
+                    <div class="payment-icon cash-icon"></div>
+                    <span>Cash</span>
+                </button>
+                <button class="payment-method" data-method="card">
+                    <div class="payment-icon card-icon"></div>
+                    <span>Debit card</span>
+                </button>
+                <button class="payment-method" data-method="paypal">
+                    <div class="payment-icon paypal-icon"></div>
+                    <span>Paypal</span>
+                </button>
+            </div>
+
+            <div class="promo-code">
+                <div class="promo-input">
+                    <input type="text" id="promo-code" placeholder="Promo code">
+                    <button id="apply-promo" class="button-secondary">Add</button>
+                </div>
+                <p class="promo-info">If you have a promo code, please add it here</p>
+            </div>
+        </div>
+        
+        <div class="summary-box">
+            <div id="payment-price-summary"></div>
+        </div>
+        <button id="confirm-payment" class="button-primary">Confirm your payment</button>
+    </div>
+</div>
+<script src="cart.js"></script>
+</body>
+</html>
+
