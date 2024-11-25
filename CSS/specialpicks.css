@@ -5,7 +5,7 @@ main {
     gap: 20px;
 }
 /*Slider Styles*/
-.whats-new, .best-sellers, .special-offers, .award-winners {
+.best-sellers, .special-offers, .award-winners {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
@@ -68,7 +68,7 @@ h2 {
     right: 10px;
 }
 
-.whats-new, .best-sellers, .special-offers, .award-winners {
+.best-sellers, .special-offers, .award-winners {
     position: relative;
 }
 

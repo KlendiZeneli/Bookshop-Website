@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="../CSS/quiz.css">
+</head>
+<body>
+    <header>
+        <h1 id="quiz-title"></h1>
+        <div id="timer">Time Left: <span id="time-left"></span></div>
+    </header>
+    <main>
+        <form id="quiz-form">
+            <div class="question">
+                <p>1. Who is the author of the Harry Potter series?</p>
+                <input type="radio" name="q1" value="correct"> a) J.K. Rowling <br>
+                <input type="radio" name="q1" value="wrong"> b) J.R.R. Tolkien <br>
+                <input type="radio" name="q1" value="wrong"> c) Suzanne Collins <br>
+                <input type="radio" name="q1" value="wrong"> d) George R.R. Martin
+            </div>
+            
+            <div class="question">
+                <p>2. What is the name of Harry Potter's owl?</p>
+                <input type="radio" name="q2" value="correct"> a) Hedwig <br>
+                <input type="radio" name="q2" value="wrong"> b) Scabbers <br>
+                <input type="radio" name="q2" value="wrong"> c) Crookshanks <br>
+                <input type="radio" name="q2" value="wrong"> d) Errol
+            </div>
+            
+            <div class="question">
+                <p>3. Which house at Hogwarts does Harry belong to?</p>
+                <input type="radio" name="q3" value="correct"> a) Gryffindor <br>
+                <input type="radio" name="q3" value="wrong"> b) Ravenclaw <br>
+                <input type="radio" name="q3" value="wrong"> c) Slytherin <br>
+                <input type="radio" name="q3" value="wrong"> d) Hufflepuff
+            </div>
+            
+            <div class="question">
+                <p>4. What is the name of the train that takes students to Hogwarts?</p>
+                <input type="radio" name="q4" value="correct"> a) Hogwarts Express <br>
+                <input type="radio" name="q4" value="wrong"> b) Knight Bus <br>
+                <input type="radio" name="q4" value="wrong"> c) Magic Liner <br>
+                <input type="radio" name="q4" value="wrong"> d) Hogwarts Flyer
+            </div>
+            
+            <div class="question">
+                <p>5. Who is Harry Potter’s godfather?</p>
+                <input type="radio" name="q5" value="correct"> a) Sirius Black <br>
+                <input type="radio" name="q5" value="wrong"> b) Remus Lupin <br>
+                <input type="radio" name="q5" value="wrong"> c) Severus Snape <br>
+                <input type="radio" name="q5" value="wrong"> d) Albus Dumbledore
+            </div>
+            
+            <div class="question">
+                <p>6. What position does Harry play on the Quidditch team?</p>
+                <input type="radio" name="q6" value="correct"> a) Seeker <br>
+                <input type="radio" name="q6" value="wrong"> b) Keeper <br>
+                <input type="radio" name="q6" value="wrong"> c) Beater <br>
+                <input type="radio" name="q6" value="wrong"> d) Chaser
+            </div>
+            
+            <div class="question">
+                <p>7. What is the symbol of Slytherin House?</p>
+                <input type="radio" name="q7" value="correct"> a) Snake <br>
+                <input type="radio" name="q7" value="wrong"> b) Lion <br>
+                <input type="radio" name="q7" value="wrong"> c) Badger <br>
+                <input type="radio" name="q7" value="wrong"> d) Eagle
+            </div>
+            
+            <div class="question">
+                <p>8. What is Voldemort’s real name?</p>
+                <input type="radio" name="q8" value="correct"> a) Tom Marvolo Riddle <br>
+                <input type="radio" name="q8" value="wrong"> b) Lucius Malfoy <br>
+                <input type="radio" name="q8" value="wrong"> c) Severus Snape <br>
+                <input type="radio" name="q8" value="wrong"> d) Albus Dumbledore
+            </div>
+            
+            <div class="question">
+                <p>9. Who is the Half-Blood Prince?</p>
+                <input type="radio" name="q9" value="correct"> a) Severus Snape <br>
+                <input type="radio" name="q9" value="wrong"> b) Draco Malfoy <br>
+                <input type="radio" name="q9" value="wrong"> c) Harry Potter <br>
+                <input type="radio" name="q9" value="wrong"> d) Tom Riddle
+            </div>
+            
+            <div class="question">
+                <p>10. What spell is used to disarm an opponent?</p>
+                <input type="radio" name="q10" value="correct"> a) Expelliarmus <br>
+                <input type="radio" name="q10" value="wrong"> b) Lumos <br>
+                <input type="radio" name="q10" value="wrong"> c) Stupefy <br>
+                <input type="radio" name="q10" value="wrong"> d) Avada Kedavra
+            </div>
+            
+            <div class="question">
+                <p>11. Who is the headmaster of Hogwarts for most of the series?</p>
+                <input type="radio" name="q11" value="correct"> a) Albus Dumbledore <br>
+                <input type="radio" name="q11" value="wrong"> b) Minerva McGonagall <br>
+                <input type="radio" name="q11" value="wrong"> c) Severus Snape <br>
+                <input type="radio" name="q11" value="wrong"> d) Dolores Umbridge
+            </div>
+            
+            <div class="question">
+                <p>12. What object turns back time for Hermione in *The Prisoner of Azkaban*?</p>
+                <input type="radio" name="q12" value="correct"> a) Time-Turner <br>
+                <input type="radio" name="q12" value="wrong"> b) Hourglass <br>
+                <input type="radio" name="q12" value="wrong"> c) Chrono Wand <br>
+                <input type="radio" name="q12" value="wrong"> d) Time Keeper
+            </div>
+            
+            <div class="question">
+                <p>13. What is the core of Harry's wand?</p>
+                <input type="radio" name="q13" value="correct"> a) Phoenix feather <br>
+                <input type="radio" name="q13" value="wrong"> b) Unicorn hair <br>
+                <input type="radio" name="q13" value="wrong"> c) Dragon heartstring <br>
+                <input type="radio" name="q13" value="wrong"> d) Veela hair
+            </div>
+            
+            <div class="question">
+                <p>14. Which potion allows a person to assume the appearance of someone else?</p>
+                <input type="radio" name="q14" value="correct"> a) Polyjuice Potion <br>
+                <input type="radio" name="q14" value="wrong"> b) Veritaserum <br>
+                <input type="radio" name="q14" value="wrong"> c) Amortentia <br>
+                <input type="radio" name="q14" value="wrong"> d) Felix Felicis
+            </div>
+            
+            <div class="question">
+                <p>15. Who kills Bellatrix Lestrange in *The Deathly Hallows*?</p>
+                <input type="radio" name="q15" value="correct"> a) Molly Weasley <br>
+                <input type="radio" name="q15" value="wrong"> b) Hermione Granger <br>
+                <input type="radio" name="q15" value="wrong"> c) Ginny Weasley <br>
+                <input type="radio" name="q15" value="wrong"> d) Harry Potter
+            </div>
+
+            <div class="question">
+                <p>16. What is the name of Ron Weasley’s pet rat?</p>
+                <input type="radio" name="q16" value="correct"> a) Scabbers <br>
+                <input type="radio" name="q16" value="wrong"> b) Crookshanks <br>
+                <input type="radio" name="q16" value="wrong"> c) Hedwig <br>
+                <input type="radio" name="q16" value="wrong"> d) Fang
+            </div>
+            
+            <div class="question">
+                <p>17. What magical device is used to destroy Horcruxes?</p>
+                <input type="radio" name="q17" value="correct"> a) Sword of Gryffindor <br>
+                <input type="radio" name="q17" value="wrong"> b) Elder Wand <br>
+                <input type="radio" name="q17" value="wrong"> c) Deluminator <br>
+                <input type="radio" name="q17" value="wrong"> d) Invisibility Cloak
+            </div>
+            
+            <div class="question">
+                <p>18. What is the name of Hagrid’s half-brother?</p>
+                <input type="radio" name="q18" value="correct"> a) Grawp <br>
+                <input type="radio" name="q18" value="wrong"> b) Aragog <br>
+                <input type="radio" name="q18" value="wrong"> c) Buckbeak <br>
+                <input type="radio" name="q18" value="wrong"> d) Norbert
+            </div>
+            
+            <div class="question">
+                <p>19. Who becomes the new Headmaster of Hogwarts after Dumbledore dies?</p>
+                <input type="radio" name="q19" value="correct"> a) Severus Snape <br>
+                <input type="radio" name="q19" value="wrong"> b) Minerva McGonagall <br>
+                <input type="radio" name="q19" value="wrong"> c) Dolores Umbridge <br>
+                <input type="radio" name="q19" value="wrong"> d) Alastor Moody
+            </div>
+            
+            <div class="question">
+                <p>20. What creature is used to guard the entrance to the Gryffindor common room?</p>
+                <input type="radio" name="q20" value="correct"> a) A portrait of the Fat Lady <br>
+                <input type="radio" name="q20" value="wrong"> b) A gargoyle <br>
+                <input type="radio" name="q20" value="wrong"> c) A troll <br>
+                <input type="radio" name="q20" value="wrong"> d) A phoenix
+            </div>
+            
+            
+            <button type="submit" id="submitbtn">Submit</button>
+        </form>
+    </main>
+
+<script src="../JS/quiz.js"></script>
+
+</body>
+</html>
