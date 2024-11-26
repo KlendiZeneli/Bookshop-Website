@@ -1,217 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Nook</title>
-    <link rel="stylesheet" href="../CSS/common_styles.css">
-    <link rel="stylesheet" href="../CSS/homepage_styles.css">
-    <script src="https://kit.fontawesome.com/440c3cdfb0.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The BooK NooK</title>
+  <link rel="stylesheet" href="/CSS/homepage_styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Glass+Antiqua&family=Sunflower:wght@300;500;700&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Glass+Antiqua&family=Sunflower:wght@300;500;700&family=Hazel&family=Averia+Serif+Libre:wght@300;400;700&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/440c3cdfb0.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <header>
-        <div class="top-header">
-            <div class="bookstore-name">Book Nook</div>
-            <div class="search-and-icons">
-                <div class="search">
-                    <input type="text" placeholder="Search" aria-label="Search books">
-                </div>
-                <div class="icons">
-                    <a href="#profile" class="icon">
-                        <div class="icon-circle">
-                            <i class="fa-solid fa-user" aria-hidden="true"></i>
-                        </div>
-                        <span>Profile</span>
-                    </a>
-                    <a href="#cart" class="icon">
-                        <div class="icon-circle">
-                            <i class="fa-solid fa-shopping-cart" aria-hidden="true"></i>
-                        </div>
-                        <span>Cart</span>
-                    </a>
-                </div>
-            </div>
+  <header>
+    <div class="container">
+      <div class="logo-title">
+        <img src="/IMG/BookStack.png" alt="BookStack" width="80" height="80">
+        <h1 class="logo-title-text">The BooK NooK</h1>
+      </div>
+      <div class="header-icons">
+        <a href="#profile" class="icon-link">
+          <div class="icon-circle">
+            <i class="fa-regular fa-user"></i>
+          </div>
+          <span class="icon-label">Profile</span>
+        </a>
+        <a href="#wishlist" class="icon-link">
+          <div class="icon-circle">
+            <i class="fa-regular fa-heart"></i>
+          </div>
+          <span class="icon-label">Wishlist</span>
+        </a>
+        <a href="#cart" class="icon-link">
+          <div class="icon-circle">
+            <i class="fa-solid fa-shopping-cart"></i>
+          </div>
+          <span class="icon-label">Cart</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="main-nav">
+    <div class="container">
+      <ul class="nav-links">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Albanian Books</a>
+          <ul class="dropdown-menu">
+            <li><a href="#" class="dropdown-item">Fiction</a></li>
+            <li><a href="#" class="dropdown-item">Non-Fiction</a></li>
+            <li><a href="#" class="dropdown-item">Mystery</a></li>
+            <li><a href="#" class="dropdown-item">Sci-fi</a></li>
+            <li><a href="#" class="dropdown-item">Romance</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">English Books</a>
+          <ul class="dropdown-menu">
+            <li><a href="#" class="dropdown-item">Fiction</a></li>
+            <li><a href="#" class="dropdown-item">Non-fiction</a></li>
+            <li><a href="#" class="dropdown-item">Mystery</a></li>
+            <li><a href="#" class="dropdown-item">Sci-Fi</a></li>
+            <li><a href="#" class="dropdown-item">Romance</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="#" class="nav-link">Special Picks</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Gifts and Accessories</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Events</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Fun Nook</a></li>
+      </ul>
+      <div class="search-container">
+        <input type="text" placeholder="Find your new title" id="search-input" class="search-input">
+        <button id="search-button" aria-label="Search">
+          <i class="fa-solid fa-search"></i>
+        </button>
+      </div>
+      <button class="mobile-menu-button" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu">
+    <ul class="mobile-nav-links">
+      <li class="nav-item">
+        <button class="nav-link dropdown-toggle">Albanian Books</button>
+        <ul class="dropdown-menu">
+          <li><a href="#" class="dropdown-item">Fiction</a></li>
+          <li><a href="#" class="dropdown-item">Thriller</a></li>
+          <li><a href="#" class="dropdown-item">Fantasy</a></li>
+          <li><a href="#" class="dropdown-item">Sci-Fi</a></li>
+          <li><a href="#" class="dropdown-item">Romance</a></li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link dropdown-toggle">English Books</button>
+        <ul class="dropdown-menu">
+          <li><a href="#" class="dropdown-item">Fiction</a></li>
+          <li><a href="#" class="dropdown-item">Non-fiction</a></li>
+          <li><a href="#" class="dropdown-item">Mystery</a></li>
+          <li><a href="#" class="dropdown-item">Sci-Fi</a></li>
+          <li><a href="#" class="dropdown-item">Romance</a></li>
+        </ul>
+      </li>
+      <li class="nav-item"><a href="#" class="nav-link">Special Picks</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Gifts and Accessories</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Events</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Fun Nook</a></li>
+    </ul>
+    <div class="mobile-search-container">
+      <input type="text" placeholder="Find your new title" class="search-input mobile-search-input">
+      <button class="mobile-search-button" aria-label="Mobile Search">
+        <i class="fa-solid fa-search"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="banner-container">
+    <img src="/IMG/6772685.jpg" alt="World Book Day - April 23" class="banner-image">
+  </div>
+  <main class="main-container">
+    <div class="container">
+      <div class="welcome-container">
+        <h2>Welcome to BookNook</h2>
+        <p>
+          Discover your next favorite book at BookNook. We offer a wide selection of books in Albanian and English,
+          special picks, gifts, accessories, and exciting events for book lovers.
+        </p>
+        <p>
+          Explore our categories, use the search bar to find specific titles, or check out our Fun Nook for
+          book-related activities and recommendations.
+        </p>
+      </div>
+
+      <section class="author-nook-container">
+        <div class="title-nook-container">
+          <h3>Author Nook</h3>
         </div>
-        <nav>
-            <ul class="main-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropbtn">Browse <i class="fa-solid fa-caret-down"></i></a>
-                    <ul class="dropdown-content">
-                        <li>
-                            <a href="browse_index.html?lang=albanian">Albanian Books</a>
-                            <ul>
-                                <li>
-                                    <a href="browse_index.html?lang=albanian&category=fiction">Fiction</a>
-                                    <ul>
-                                        <li><a href="browse_index.html?lang=albanian&category=fiction&subcategory=sci-fi">Sci-Fi</a></li>
-                                        <li><a href="browse_index.html?lang=albanian&category=fiction&subcategory=thriller">Thriller</a></li>
-                                        <li><a href="browse_index.html?lang=albanian&category=fiction&subcategory=mystery">Mystery</a></li>
-                                        <li><a href="browse_index.html?lang=albanian&category=fiction&subcategory=romance">Romance</a></li>
-                                        <li><a href="browse_index.html?lang=albanian&category=fiction&subcategory=childrens">Children's Books</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="browse_index.html?lang=albanian&category=non-fiction">Non-Fiction</a>
-                                    <ul>
-                                        <li><a href="browse_index.html?lang=albanian&category=non-fiction&subcategory=biography">Biography</a></li>
-                                        <li><a href="browse_index.html?lang=albanian&category=non-fiction&subcategory=self-help">Self Help</a></li>
-                                        <li><a href="browse_index.html?lang=albanian&category=non-fiction&subcategory=history">History</a></li>
-                                        <li><a href="browse_index.html?lang=albanian&category=non-fiction&subcategory=science">Science</a></li>
-                                        <li><a href="browse_index.html?lang=albanian&category=non-fiction&subcategory=religion">Religion</a></li>
-                                        <li><a href="browse_index.html?lang=albanian&category=non-fiction&subcategory=travel">Travel</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="browse_index.html?lang=english">English Books</a>
-                            <ul>
-                                <li>
-                                    <a href="browse_index.html?lang=english&category=fiction">Fiction</a>
-                                    <ul>
-                                        <li><a href="browse_index.html?lang=english&category=fiction&subcategory=sci-fi">Sci-Fi</a></li>
-                                        <li><a href="browse_index.html?lang=english&category=fiction&subcategory=thriller">Thriller</a></li>
-                                        <li><a href="browse_index.html?lang=english&category=fiction&subcategory=mystery">Mystery</a></li>
-                                        <li><a href="browse_index.html?lang=english&category=fiction&subcategory=romance">Romance</a></li>
-                                        <li><a href="browse_index.html?lang=english&category=fiction&subcategory=childrens">Children's Books</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="browse_index.html?lang=english&category=non-fiction">Non-Fiction</a>
-                                    <ul>
-                                        <li><a href="browse_index.html?lang=english&category=non-fiction&subcategory=biography">Biography</a></li>
-                                        <li><a href="browse_index.html?lang=english&category=non-fiction&subcategory=self-help">Self Help</a></li>
-                                        <li><a href="browse_index.html?lang=english&category=non-fiction&subcategory=history">History</a></li>
-                                        <li><a href="browse_index.html?lang=english&category=non-fiction&subcategory=science">Science</a></li>
-                                        <li><a href="browse_index.html?lang=english&category=non-fiction&subcategory=religion">Religion</a></li>
-                                        <li><a href="browse_index.html?lang=english&category=non-fiction&subcategory=travel">Travel</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="browse_index.html?lang=english&category=graphic-novels">Graphic Novels</a>
-                                    <ul>
-                                        <li><a href="browse_index.html?lang=english&category=graphic-novels&subcategory=comics">Comics</a></li>
-                                        <li><a href="browse_index.html?lang=english&category=graphic-novels&subcategory=manga">Manga</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="#events">Events</a></li>
-                <li><a href="#deals">Special Deals</a></li>
-                <li><a href="#loyalty">Loyalty Program</a></li>
-                <li><a href="#support">Support</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="whats-new">
-            <h2>What's New</h2>
-            <div class="book-slider">
-                <div class="book-grid">
-                    <div class="book-item">New Book 1</div>
-                    <div class="book-item">New Book 2</div>
-                    <div class="book-item">New Book 3</div>
-                    <div class="book-item">New Book 4</div>
-                    <div class="book-item">New Book 5</div>
-                    <div class="book-item">New Book 6</div>
-                    <div class="book-item">New Book 7</div>
-                    <div class="book-item">New Book 8</div>
-                    <div class="book-item">New Book 9</div>
-                    <div class="book-item">New Book 10</div>
-                    <div class="book-item">New Book 11</div>
-                    <div class="book-item">New Book 12</div>
-                    <div class="book-item">New Book 13</div>
-                    <div class="book-item">New Book 14</div>
-                    <div class="book-item">New Book 15</div>
-                </div>
+        <div class="nook-container">
+        <div class="cards-container">
+          <div class="card">
+            <div class="glass glass-1">
+              <img src="/IMG/Emma.jpeg" alt="Book 1 image" />
+              <span class="card-text">Book 1</span>
             </div>
-        </section>
-        <section class="best-sellers">
-            <h2>Best Sellers</h2>
-            <div class="book-slider">
-                <div class="book-grid">
-                    <div class="book-item">Best Seller 1</div>
-                    <div class="book-item">Best Seller 2</div>
-                    <div class="book-item">Best Seller 3</div>
-                    <div class="book-item">Best Seller 4</div>
-                    <div class="book-item">Best Seller 5</div>
-                    <div class="book-item">Best Seller 6</div>
-                    <div class="book-item">Best Seller 7</div>
-                    <div class="book-item">Best Seller 8</div>
-                    <div class="book-item">Best Seller 9</div>
-                    <div class="book-item">Best Seller 10</div>
-                    <div class="book-item">Best Seller 11</div>
-                    <div class="book-item">Best Seller 12</div>
-                    <div class="book-item">Best Seller 13</div>
-                    <div class="book-item">Best Seller 14</div>
-                    <div class="book-item">Best Seller 15</div>
-                </div>
+          </div>
+          <div class="card">
+            <div class="glass glass-2">
+              <img src="/IMG/Little Women.jpeg" alt="Book 2 image" />
+              <span class="card-text">Book 2</span>
             </div>
-        </section>
-        <section class="event-hero">
-            <div class="event-cards-container">
-                <div class="event-card">
-                    <div class="glass glass-1">
-                        <img src="/placeholder.svg?height=200&width=180" alt="Event 1 image" />
-                        <span class="event-text">Event 1</span>
-                    </div>
-                </div>
-                <div class="event-card">
-                    <div class="glass glass-2">
-                        <img src="/placeholder.svg?height=200&width=180" alt="Event 2 image" />
-                        <span class="event-text">Event 2</span>
-                    </div>
-                </div>
-                <div class="event-card">
-                    <div class="glass glass-3">
-                        <img src="/placeholder.svg?height=200&width=180" alt="Event 3 image" />
-                        <span class="event-text">Event 3</span>
-                    </div>
-                </div>
+          </div>
+          <div class="card">
+            <div class="glass glass-3">
+              <img src="/IMG/Pride and Prejudice.jpeg" alt="Book 3 image" />
+              <span class="card-text">Book 3</span>
             </div>
-            <div class="event-content">
-                <h3>Meet Bestselling Author Jane Doe</h3>
-                <p>Join us for an exclusive evening with Jane Doe, author of the critically acclaimed novel "Whispers in the Wind". Get your book signed and participate in an engaging Q&A session.</p>
-                <p><strong>Date:</strong> July 15, 2023 | <strong>Time:</strong> 7:00 PM</p>
-                <p><strong>Location:</strong> Book Nook Store</p>
-                <button class="learn-more">Learn More</button>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#help">Help</a></li>
-                    <li><a href="#terms">Terms of Service</a></li>
-                    <li><a href="#privacy">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Connect With Us</h4>
-                <ul class="social-links">
-                    <li><a href="#facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
-                    <li><a href="#twitter" aria-label="Twitter"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="#instagram" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Newsletter</h4>
-                <form class="newsletter-form">
-                    <label for="email" class="sr-only">Email address</label>
-                    <input type="email" id="email" placeholder="Enter your email" required>
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
+          </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2023 Book Nook. All rights reserved.</p>
+        <div class="nook-content">
+          <h3>Meet Bestselling Author Jane Doe</h3>
+          <p>Join us for an exclusive evening with Jane Doe, author of the critically acclaimed novel "Whispers in the
+            Wind". Get your book signed and participate in an engaging Q&A session.</p>
+          <p><strong>Date:</strong> July 15, 2023 | <strong>Time:</strong> 7:00 PM</p>
+          <p><strong>Location:</strong> Book Nook Store</p>
+          <button class="learn-more">Learn More</button>
         </div>
-    </footer>
-    <script src="../JS/homepage_script.js"></script>
+      </div>
+      </section>
+
+      <section class="book-carousel-hero">
+        <div class="new-releases-container">
+          <h3>Newest Releases</h3>
+        </div>
+        <div class="carousel-container">
+          <button class="carousel-button prev" aria-label="prev">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="carousel-button next" aria-label="next">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <div class="carousel">
+            
+            <div class="book-card">
+              <img src="/IMG/The Great Gatsby.jpeg" alt="The Great Gatsby" class="book-image">
+              <div class="book-details">
+                <div class="book-title">The Great Gatsby</div>
+                <div class="book-price">
+                  <span class="original-price">$29.99</span>
+                </div>
+              </div>
+              <button class="add-to-cart" onclick="addToCart('The Great Gatsby')">Add to cart</button>
+              <div class="heart-icon" onclick="toggleHeart(this)">
+                <span class="heart">&#9825;</span> <!-- Empty heart -->
+            </div>
+            </div>
+            
+            <div class="book-card">
+              <img src="/IMG/To Kill A Mockingbird.jpeg" alt="To Kill a Mockingbird" class="book-image">
+              <div class="book-details">
+                <div class="book-title">To Kill a Mockingbird</div>
+                <div class="book-price">
+                  <span class="original-price">$24.99</span>
+                </div>
+              </div>
+              <button class="add-to-cart" onclick="addToCart('To Kill a Mockingbird')">Add to cart</button>
+              <div class="heart-icon" onclick="toggleHeart(this)">
+                <span class="heart">&#9825;</span> <!-- Empty heart -->
+            </div>
+            </div>
+
+            <div class="book-card">
+              <img src="/IMG/1984.jpg" alt="1984" class="book-image">
+              <div class="book-details">
+                <div class="book-title">1984</div>
+                <div class="book-price">
+                  <span class="original-price">$26.99</span>
+                </div>
+              </div>
+              <button class="add-to-cart" onclick="addToCart('1984')">Add to cart</button>
+              <div class="heart-icon" onclick="toggleHeart(this)">
+                <span class="heart">&#9825;</span> <!-- Empty heart -->
+            </div>
+            </div>
+            
+            <div class="book-card">
+              <img src="/IMG/Little Women.jpeg" alt="Little Women" class="book-image">
+              <div class="book-details">
+                <div class="book-title">Little Women</div>
+                <div class="book-price">
+                  <span class="original-price">$22.99</span>
+                </div>
+              </div>
+              <button class="add-to-cart" onclick="addToCart('Little Women')">Add to cart</button>
+              <div class="heart-icon" onclick="toggleHeart(this)">
+                <span class="heart">&#9825;</span> <!-- Empty heart -->
+            </div>
+            </div>
+            
+            <div class="book-card">
+              <img src="/IMG/Pride and Prejudice.jpeg" alt="Pride and Prejudice" class="book-image">
+              <div class="book-details">
+                <div class="book-title">Pride and Prejudice</div>
+                <div class="book-price">
+                  <span class="original-price">$22.99</span>
+                </div>
+              </div>
+              <button class="add-to-cart" onclick="addToCart('Pride and Prejudice')">Add to cart</button>
+              <div class="heart-icon" onclick="toggleHeart(this)">
+                <span class="heart">&#9825;</span> <!-- Empty heart -->
+            </div>
+            </div>
+            
+            <div class="book-card">
+              <img src="/IMG/Emma.jpeg" alt="Emma" class="book-image">
+              <div class="book-details">
+                <div class="book-title">Emma</div>
+                <div class="book-price">
+                  <span class="original-price">$22.99</span>
+                </div>
+              </div>
+              <button class="add-to-cart" onclick="addToCart('Emma')">Add to cart</button>
+              <div class="heart-icon" onclick="toggleHeart(this)">
+                <span class="heart">&#9825;</span> <!-- Empty heart -->
+            </div>
+            </div>
+           
+            <div class="book-card">
+              <img src="/IMG/Jane Eyre.jpg" alt="Jane Eyre" class="book-image">
+              <div class="book-details">
+                <div class="book-title">Jane Eyre</div>
+                <div class="book-price">
+                  <span class="original-price">$20.99</span>
+                </div>
+              </div>
+              <button class="add-to-cart" onclick="addToCart('Jane Eyre')">Add to cart</button>
+              <div class="heart-icon" onclick="toggleHeart(this)">
+                <span class="heart">&#9825;</span> <!-- Empty heart -->
+            </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 BookNook. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="/JS/homepage_script.js"></script>
 </body>
 </html>
