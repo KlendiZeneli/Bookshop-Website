@@ -4,13 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../CSS/result_styles.css">
+    <link rel="stylesheet" href="/CSS/homepage_styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Glass+Antiqua&family=Sunflower:wght@300;500;700&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Glass+Antiqua&family=Sunflower:wght@300;500;700&family=Hazel&family=Averia+Serif+Libre:wght@300;400;700&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/440c3cdfb0.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <header>
-        <h1>Search Results</h1>
-    </header>
-
+        <div class="container">
+          <div class="logo-title">
+            <img src="/IMG/BookStack.png" alt="BookStack" width="80" height="80">
+            <h1 class="logo-title-text">The BooK NooK</h1>
+          </div>
+          <div class="header-icons">
+            <a href="#profile" class="icon-link">
+              <div class="icon-circle">
+                <i class="fa-regular fa-user"></i>
+              </div>
+              <span class="icon-label">Profile</span>
+            </a>
+            <a href="#wishlist" class="icon-link">
+              <div class="icon-circle">
+                <i class="fa-regular fa-heart"></i>
+              </div>
+              <span class="icon-label">Wishlist</span>
+            </a>
+            <a href="#cart" class="icon-link">
+              <div class="icon-circle">
+                <i class="fa-solid fa-shopping-cart"></i>
+              </div>
+              <span class="icon-label">Cart</span>
+            </a>
+          </div>
+        </div>
+      </header>
+    
+      <nav class="main-nav">
+        <div class="container">
+          <ul class="nav-links">
+            <li class="nav-item">
+              <a href="#" class="nav-link">Albanian Books</a>
+              <ul class="dropdown-menu">
+                <li><a href="#" class="dropdown-item">Fiction</a></li>
+                <li><a href="#" class="dropdown-item">Non-Fiction</a></li>
+                <li><a href="#" class="dropdown-item">Mystery</a></li>
+                <li><a href="#" class="dropdown-item">Sci-fi</a></li>
+                <li><a href="#" class="dropdown-item">Romance</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">English Books</a>
+              <ul class="dropdown-menu">
+                <li><a href="#" class="dropdown-item">Fiction</a></li>
+                <li><a href="#" class="dropdown-item">Non-fiction</a></li>
+                <li><a href="#" class="dropdown-item">Mystery</a></li>
+                <li><a href="#" class="dropdown-item">Sci-Fi</a></li>
+                <li><a href="#" class="dropdown-item">Romance</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a href="#" class="nav-link">Special Picks</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Gifts and Accessories</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Fun Nook</a></li>
+          </ul>
+          <div class="search-container">
+            <input type="text" placeholder="Find your new title" id="search-input" class="search-input">
+            <button id="search-button" aria-label="Search">
+              <i class="fa-solid fa-search"></i>
+            </button>
+          </div>
+          <button class="mobile-menu-button" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
     <div id="book-results" class="book-results-container">
         <!-- Book cards will be dynamically added here -->
     </div>
@@ -37,35 +111,59 @@
 
         // Function to display book cards
         function displayBooks(books) {
-            const resultsContainer = document.getElementById("book-results");
-            resultsContainer.innerHTML = ''; // Clear previous results
+    const container = document.querySelector("#book-results"); // Use a default container
+    if (!container) {
+        console.error("Error: No container with class 'book-results' found.");
+        return;
+    }
+    container.innerHTML = ''; // Clear previous content
 
-            books.forEach(book => {
-                const bookCard = document.createElement("div");
-                bookCard.classList.add("book-card");
+    books.forEach(book => {
+        const bookCard = document.createElement("div");
+        bookCard.classList.add("book-card");
 
-                // Book image
-                const bookImage = document.createElement("img");
-                bookImage.classList.add("book-image");
-                bookImage.src = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'default_image.jpg';
-                bookCard.appendChild(bookImage);
+        // Create the image element
+        const bookImage = document.createElement("img");
+        bookImage.classList.add("book-image");
+        bookImage.src = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : '/IMG/default_image.jpg';
+        bookImage.alt = book.volumeInfo.title || "No Title Available";
+        bookCard.appendChild(bookImage);
 
-                // Book title
-                const bookTitle = document.createElement("div");
-                bookTitle.classList.add("book-title");
-                bookTitle.textContent = book.volumeInfo.title || 'No Title Available';
-                bookCard.appendChild(bookTitle);
+        // Create the book details container
+        const bookDetails = document.createElement("div");
+        bookDetails.classList.add("book-details");
 
-                // Book price
-                const bookPrice = document.createElement("div");
-                bookPrice.classList.add("book-price");
-                bookPrice.textContent = book.saleInfo.listPrice ? `$${book.saleInfo.listPrice.amount}` : 'Price not available';
-                bookCard.appendChild(bookPrice);
+        // Add the book title
+        const bookTitle = document.createElement("div");
+        bookTitle.classList.add("book-title");
+        bookTitle.textContent = book.volumeInfo.title || "No Title Available";
+        bookDetails.appendChild(bookTitle);
 
-                // Add the book card to the results container
-                resultsContainer.appendChild(bookCard);
-            });
-        }
+        // Add the book price
+        const bookPrice = document.createElement("div");
+        bookPrice.classList.add("book-price");
+        const priceSpan = document.createElement("span");
+        priceSpan.classList.add("original-price");
+        priceSpan.textContent = book.saleInfo.listPrice ? `$${book.saleInfo.listPrice.amount}` : "Price Not Available";
+        bookPrice.appendChild(priceSpan);
+        bookDetails.appendChild(bookPrice);
+
+        bookCard.appendChild(bookDetails);
+
+        // Add the Add to Cart button
+        const addToCartButton = document.createElement("button");
+        addToCartButton.classList.add("add-to-cart");
+        addToCartButton.textContent = "Add to cart";
+        addToCartButton.onclick = () => addToCart(book.volumeInfo.title || "No Title Available");
+        bookCard.appendChild(addToCartButton);
+        bookCard.style.margin= "20px";
+
+        // Append the book card to the container
+        container.appendChild(bookCard);
+    });
+}
+
+
 
         // Get the search query from URL and fetch books
         const query = getQueryParam('query');

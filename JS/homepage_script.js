@@ -32,11 +32,11 @@ document.addEventListener('DOMContentLoaded', function () {
         mobileMenu.classList.toggle('active');
     });
 
-    function performSearch(searchTerm) {
-        searchTerm = searchTerm.trim();
-        if (searchTerm) {
-            console.log('Searching for:', searchTerm);
-            /* Search functionality will be added later*/
+    function performSearch(query) {
+        query = query.trim();
+        if (query) {
+            // Redirect to results page with the search query
+            window.location.href = `results.html?query=${encodeURIComponent(query)}`;
         }
     }
 
@@ -176,6 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return null;
         }
     }
+
 
    
     populateCarousel();
