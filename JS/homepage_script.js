@@ -65,3 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
         rightArrow.addEventListener('click', () => wrapScroll('right'));
     });
 });
+
+    (function () {
+        d = document;
+        s = d.createElement("script");
+        s.src = "https://webagent.ai/api/chatbot/92208e6b-e6d1-4edc-a393-b6eb462c477c";
+        s.async = 1;
+        d.getElementsByTagName("head")[0].appendChild(s);
+    })();
