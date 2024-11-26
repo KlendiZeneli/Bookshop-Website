@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Search Results</h1>
+    </header>
+
+    <div id="book-results" class="book-results-container">
+        <!-- Book cards will be dynamically added here -->
+    </div>
+
+    <script>
+        // Function to get the search query from the URL
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Function to fetch book data based on the search query
+        function fetchBooks(query) {
+            const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}`;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    displayBooks(data.items);
+                })
+                .catch(error => {
+                    console.error('Error fetching books:', error);
+                });
+        }
+
+        // Function to display book cards
+        function displayBooks(books) {
+            const resultsContainer = document.getElementById("book-results");
+            resultsContainer.innerHTML = ''; // Clear previous results
+
+            books.forEach(book => {
+                const bookCard = document.createElement("div");
+                bookCard.classList.add("book-card");
+
+                // Book image
+                const bookImage = document.createElement("img");
+                bookImage.classList.add("book-image");
+                bookImage.src = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'default_image.jpg';
+                bookCard.appendChild(bookImage);
+
+                // Book title
+                const bookTitle = document.createElement("div");
+                bookTitle.classList.add("book-title");
+                bookTitle.textContent = book.volumeInfo.title || 'No Title Available';
+                bookCard.appendChild(bookTitle);
+
+                // Book price
+                const bookPrice = document.createElement("div");
+                bookPrice.classList.add("book-price");
+                bookPrice.textContent = book.saleInfo.listPrice ? `$${book.saleInfo.listPrice.amount}` : 'Price not available';
+                bookCard.appendChild(bookPrice);
+
+                // Add the book card to the results container
+                resultsContainer.appendChild(bookCard);
+            });
+        }
+
+        // Get the search query from URL and fetch books
+        const query = getQueryParam('query');
+        if (query) {
+            fetchBooks(query);
+        } else {
+            document.getElementById("book-results").innerHTML = '<p>No search query provided.</p>';
+        }
+    </script>
+</body>
+</html>
