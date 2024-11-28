@@ -1,63 +1,65 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const searchInput = document.getElementById('search-input');
-    const searchButton = document.getElementById('search-button');
-    const mobileMenuButton = document.querySelector('.mobile-menu-button');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const mobileSearchInput = document.querySelector('.mobile-search-input');
-    const mobileSearchButton = document.querySelector('.mobile-search-button');
-    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
-    searchButton.addEventListener('click', function () {
-        performSearch(searchInput.value);
-    });
 
-    searchInput.addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            performSearch(searchInput.value);
-        }
-    });
+// document.addEventListener('DOMContentLoaded', function () {
+//     const searchInput = document.getElementById('search-input');
+//     const searchButton = document.getElementById('search-button');
+//     const mobileMenuButton = document.querySelector('.mobile-menu-button');
+//     const mobileMenu = document.querySelector('.mobile-menu');
+//     const mobileSearchInput = document.querySelector('.mobile-search-input');
+//     const mobileSearchButton = document.querySelector('.mobile-search-button');
+//     const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
-    mobileSearchButton.addEventListener('click', function () {
-        performSearch(mobileSearchInput.value);
-    });
+//     searchButton.addEventListener('click', function () {
+//         performSearch(searchInput.value);
+//     });
 
-    mobileSearchInput.addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            performSearch(mobileSearchInput.value);
-        }
-    });
+//     searchInput.addEventListener('keypress', function (e) {
+//         if (e.key === 'Enter') {
+//             performSearch(searchInput.value);
+//         }
+//     });
 
-    mobileMenuButton.addEventListener('click', function () {
-        this.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-    });
+//     mobileSearchButton.addEventListener('click', function () {
+//         performSearch(mobileSearchInput.value);
+//     });
 
-    function performSearch(query) {
-        query = query.trim();
-        if (query) {
-            // Redirect to results page with the search query
-            window.location.href = `results.html?query=${encodeURIComponent(query)}`;
-        }
-    }
+//     mobileSearchInput.addEventListener('keypress', function (e) {
+//         if (e.key === 'Enter') {
+//             performSearch(mobileSearchInput.value);
+//         }
+//     });
 
-    /* Dropdown functionality */
-    dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', function () {
-            const dropdownMenu = this.nextElementSibling;
-            if (mobileMenu.classList.contains('active')) {
-                // For mobile menu
-                dropdownMenu.classList.toggle('active');
-            } else {
-                // For desktop menu
-                const isOpen = dropdownMenu.style.display === 'block';
-                closeAllDropdowns();
-                if (!isOpen) {
-                    dropdownMenu.style.display = 'block';
-                }
-            }
-        });
-    });
-});
+//     mobileMenuButton.addEventListener('click', function () {
+//         this.classList.toggle('active');
+//         mobileMenu.classList.toggle('active');
+//     });
+
+//     function performSearch(query) {
+//         query = query.trim();
+//         if (query) {
+//             // Redirect to results page with the search query
+//             window.location.href = `results.html?query=${encodeURIComponent(query)}`;
+//         }
+//     }
+
+//     /* Dropdown functionality */
+//     dropdownToggles.forEach(toggle => {
+//         toggle.addEventListener('click', function () {
+//             const dropdownMenu = this.nextElementSibling;
+//             if (mobileMenu.classList.contains('active')) {
+//                 // For mobile menu
+//                 dropdownMenu.classList.toggle('active');
+//             } else {
+//                 // For desktop menu
+//                 const isOpen = dropdownMenu.style.display === 'block';
+//                 closeAllDropdowns();
+//                 if (!isOpen) {
+//                     dropdownMenu.style.display = 'block';
+//                 }
+//             }
+//         });
+//     });
+// });
 
     (function () {
         d = document;
