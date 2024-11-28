@@ -1,0 +1,74 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+/* Centered Content */
+.container {
+  width: 80%;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+}
+
+/* Page Title */
+h1 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+/* Section Headings */
+h2 {
+  margin-top: 30px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Text Paragraphs */
+p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Highlighted Text */
+.highlight {
+  color: #0073e6;
+  font-weight: bold;
+}
+
+/* Coupon Section */
+.coupon {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border: 1px dashed #0073e6;
+  border-radius: 8px;
+}
+
+.coupon h3 {
+  font-size: 20px;
+  margin: 10px 0;
+  color: #333;
+}
+
+.coupon p {
+  margin: 0;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Bullet Points */
+ul {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+ul li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Cards</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/gift.css">
+    <link rel="stylesheet" href="../CSS/footer.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Gift Cards</h1>
+
+        <h2>Give the Gift of Reading</h2>
+        <p>
+            A Book Nook gift card is the perfect way to share the joy of reading with your loved ones. Whether it's a birthday, holiday, or just a thoughtful gesture, our gift cards allow recipients to choose the books they love most.
+        </p>
+
+        <!-- $20 Gift Card -->
+        <div class="gift-card">
+            <h3>$20 Gift Card</h3>
+            <p>Perfect for small thoughtful gifts, allowing recipients to pick something they love.</p>
+            <div class="quantity-control">
+                <button onclick="changeQuantity('quantity20', -1)">-</button>
+                <input type="number" id="quantity20" value="0" min="0" readonly>
+                <button onclick="changeQuantity('quantity20', 1)">+</button>
+            </div>
+        </div>
+
+        <!-- $50 Gift Card -->
+        <div class="gift-card">
+            <h3>$50 Gift Card</h3>
+            <p>Ideal for avid readers or special occasions, offering more flexibility for their choices.</p>
+            <div class="quantity-control">
+                <button onclick="changeQuantity('quantity50', -1)">-</button>
+                <input type="number" id="quantity50" value="0" min="0" readonly>
+                <button onclick="changeQuantity('quantity50', 1)">+</button>
+            </div>
+        </div>
+
+        <!-- $100 Gift Card -->
+        <div class="gift-card">
+            <h3>$100 Gift Card</h3>
+            <p>A generous gift for true book lovers, perfect for large purchases or multiple visits.</p>
+            <div class="quantity-control">
+                <button onclick="changeQuantity('quantity100', -1)">-</button>
+                <input type="number" id="quantity100" value="0" min="0" readonly>
+                <button onclick="changeQuantity('quantity100', 1)">+</button>
+            </div>
+        </div>
+
+        <button class="add-to-cart-button">Add to Cart</button>
+    </div>
+
+    <script>
+        // Function to handle quantity change
+        function changeQuantity(id, change) {
+            const input = document.getElementById(id);
+            let currentValue = parseInt(input.value) || 0;
+            let newValue = currentValue + change;
+            if (newValue >= 0) {
+                input.value = newValue;
+            }
+        }
+    </script>
+
+</body>
+</html>
