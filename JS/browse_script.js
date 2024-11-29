@@ -1,273 +1,306 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const priceRange = document.getElementById('price-range');
-    const priceRangeValue = document.getElementById('price-range-value');
-    const applyFiltersBtn = document.getElementById('apply-filters');
-    const sortSelect = document.getElementById('sort-select');
-    const bookGrid = document.querySelector('.book-grid');
-    const prevPageBtn = document.getElementById('prev-page');
-    const nextPageBtn = document.getElementById('next-page');
-    const currentPageSpan = document.getElementById('current-page');
-    const ratingFilter = document.getElementById('rating-filter');
-    const genreFilter = document.getElementById('genre-filter');
-    const genreFilterContainer = document.getElementById('genre-filter-container');
-    const subgenreFilter = document.getElementById('subgenre-filter');
-    const subgenreFilterContainer = document.getElementById('subgenre-filter-container');
 
-    let currentPage = 1;
-    const booksPerPage = 10;
-    const totalBooks = 50;
+  /* Search Functionality */
+  const searchInput = document.getElementById('search-input');
+  const searchButton = document.getElementById('search-button');
+  const mobileMenuButton = document.querySelector('.mobile-menu-button');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const mobileSearchInput = document.querySelector('.mobile-search-input');
+  const mobileSearchButton = document.querySelector('.mobile-search-button');
 
-    // Parse URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const lang = urlParams.get('lang');
-    const category = urlParams.get('category');
-    const subcategory = urlParams.get('subcategory');
+  searchButton.addEventListener('click', function () {
+    performSearch(searchInput.value);
+  });
 
-    // Update page title and filters based on URL parameters
-    updatePageTitle();
-    populateGenreFilters();
+  searchInput.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      performSearch(searchInput.value);
+    }
+  });
 
-    function updatePageTitle() {
-        let title = 'Book Nook - Browse';
-        if (lang) {
-            title += ` ${lang.charAt(0).toUpperCase() + lang.slice(1)} Books`;
-            if (category) {
-                title += ` - ${category.charAt(0).toUpperCase() + category.slice(1)}`;
-                if (subcategory) {
-                    title += ` - ${subcategory.charAt(0).toUpperCase() + subcategory.slice(1)}`;
-                }
-            }
+  mobileSearchButton.addEventListener('click', function () {
+    performSearch(mobileSearchInput.value);
+  });
+
+  mobileSearchInput.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      performSearch(mobileSearchInput.value);
+    }
+  });
+
+  mobileMenuButton.addEventListener('click', function () {
+    this.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+  });
+
+  function performSearch(searchTerm) {
+    searchTerm = searchTerm.trim();
+    if (searchTerm) {
+      console.log('Searching for:', searchTerm);
+      // Search functionality to be implemented later
+    }
+  }
+
+  /* Filter Sidebar Functionality */
+  const genreCheckboxes = document.querySelectorAll('.filter-checkbox[data-genre]');
+  const languageCheckboxes = document.querySelectorAll('.filter-section-language .filter-checkbox');
+  const yearCheckboxes = document.querySelectorAll('.filter-section-year .filter-checkbox');
+  const priceRange = document.getElementById('price-range');
+  const priceMin = document.getElementById('price-min');
+  const priceMax = document.getElementById('price-max');
+
+  function handleGenreChange(event) {
+    const selectedGenre = event.target.getAttribute('data-genre');
+    const subgenreGroup = document.getElementById(`${selectedGenre}-subgenres`);
+    const filterGroup = document.querySelector('.filter-section:first-child .filter-group');
+
+    document.querySelectorAll('.subgenre-group').forEach(group => {
+      group.style.display = 'none';
+    });
+
+    if (event.target.checked) {
+      // Uncheck all other genre checkboxes
+      genreCheckboxes.forEach(cb => {
+        if (cb !== event.target) {
+          cb.checked = false;
+          cb.parentElement.style.display = 'block';
         }
-        document.title = title;
+      });
+
+      if (subgenreGroup) {
+        subgenreGroup.style.display = 'flex';
+      }
+      filterGroup.classList.add('filtered');
+      event.target.parentElement.style.display = 'block';
+    } else {
+      filterGroup.classList.remove('filtered');
+      genreCheckboxes.forEach(cb => {
+        cb.parentElement.style.display = 'block';
+      });
     }
 
-    function updateURL() {
-        const selectedGenre = document.querySelector('#genre-filter input:checked');
-        const selectedSubgenre = document.querySelector('#subgenre-filter input:checked');
+    // Trigger filterBooks to update the displayed books
+    filterBooks();
+  }
 
-        const genreParam = selectedGenre ? selectedGenre.value : '';
-        const subgenreParam = selectedSubgenre ? selectedSubgenre.value : '';
-
-        const newURL = new URL(window.location);
-        if (genreParam) newURL.searchParams.set('genre', genreParam);
-        if (subgenreParam) newURL.searchParams.set('subcategory', subgenreParam);
-
-        window.history.pushState({}, '', newURL);
-    }
-
-    function populateGenreFilters() {
-        genreFilter.innerHTML = '';
-        subgenreFilter.innerHTML = '';
-
-        const selectedSubcategory = urlParams.get('subcategory'); // Detect subcategory in URL
-
-        // If a specific subcategory is selected, hide both genre and subgenre filters
-        if (selectedSubcategory) {
-            genreFilterContainer.style.display = 'none'; // Hide genre filter
-            subgenreFilterContainer.style.display = 'none'; // Hide subgenre filter
-            return; // Skip further processing
-        }
-
-        let genres = [];
-
-        // Determine genres to populate based on language and category
-        if ((lang === 'albanian' || lang === 'english') && !category) {
-            genreFilterContainer.style.display = 'block';
-            genres = ['Fiction', 'Non-Fiction'];
-            if (lang === 'english') {
-                genres.push('Graphic Novels');
+  function handleSingleSelection(checkboxes) {
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', function () {
+        if (this.checked) {
+          checkboxes.forEach(cb => {
+            if (cb !== this) {
+              cb.parentElement.style.display = 'none';
             }
-        } else if (category) {
-            genres = [category.charAt(0).toUpperCase() + category.slice(1)]; // Ensure selected category is shown
+          });
         } else {
-            genreFilterContainer.style.display = 'none';
-            subgenreFilterContainer.style.display = 'none';
-            return;
+          checkboxes.forEach(cb => {
+            cb.parentElement.style.display = 'block';
+          });
         }
+      });
+    });
+  }
 
-        genres.forEach(genre => {
-            const li = document.createElement('li');
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.id = genre.toLowerCase().replace(' ', '-');
-            checkbox.name = 'genre';
-            checkbox.value = genre.toLowerCase();
+  function updatePriceRange() {
+    const value = priceRange.value;
+    priceMin.textContent = `$0`;
+    priceMax.textContent = `$${value}`;
+  }
 
-            // Auto-check the checkbox if it matches the category from the URL
-            if (category && category.toLowerCase() === genre.toLowerCase()) {
-                checkbox.checked = true;
-                updateSubgenreFilters(); // Load subgenres for this genre
-            }
+  genreCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', handleGenreChange);
+  });
 
-            checkbox.addEventListener('change', function () {
-                updateSubgenreFilters();
-            });
+  handleSingleSelection(languageCheckboxes);
+  handleSingleSelection(yearCheckboxes);
 
-            const label = document.createElement('label');
-            label.htmlFor = checkbox.id;
-            label.textContent = genre;
+  priceRange.addEventListener('input', updatePriceRange);
+  updatePriceRange();
 
-            li.appendChild(checkbox);
-            li.appendChild(label);
-            genreFilter.appendChild(li);
-        });
+
+
+
+  /* Toggle Side Menu Functionality */
+  const toggleFilterBtn = document.getElementById('toggle-filter');
+  const filtersSidebar = document.querySelector('.filter-menu');
+  const contentWrapper = document.querySelector('.content-wrapper');
+  const bookGrid = document.querySelector('.book-grid');
+
+  toggleFilterBtn.addEventListener('click', function () {
+    filtersSidebar.classList.toggle('open');
+    contentWrapper.classList.toggle('shifted');
+    bookGrid.classList.toggle('shifted');
+    bookGrid.classList.toggle('grid-3x4');
+    bookGrid.classList.toggle('grid-4x3');
+
+    if (filtersSidebar.classList.contains('open')) {
+      toggleFilterBtn.textContent = 'Close Filters';
+    } else {
+      toggleFilterBtn.textContent = 'Open Filters';
     }
+  });
 
-    // Check if a category (genre) is pre-selected via URL
-    if (category) {
-        const genreCheckbox = document.querySelector(`#genre-filter input[value="${category.toLowerCase()}"]`);
-        if (genreCheckbox) {
-            genreCheckbox.checked = true;
-            updateSubgenreFilters(); // Show subgenres for the selected genre
+
+  
+
+  /*Book Display and Pagination Functionality*/
+  let books = [];
+  let currentPage = 1;
+  let filteredBooks = [];
+  const booksPerPage = 12;
+
+  function fetchBooks() {
+    return fetch('bookarray.json')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Failed to fetch data: ${response.status}`);
         }
-    }
-
-    function updateSubgenreFilters() {
-        subgenreFilter.innerHTML = '';
-        const selectedSubcategory = urlParams.get('subcategory'); // Detect subcategory in URL
-
-        // If a specific subcategory is selected, hide the subgenre filter
-        if (selectedSubcategory) {
-            subgenreFilterContainer.style.display = 'none';
-            return; // Skip further processing
-        }
-        
-        const selectedGenres = Array.from(document.querySelectorAll('#genre-filter input:checked')).map(cb => cb.value);
-        if (selectedGenres.length === 0) {
-            subgenreFilterContainer.style.display = 'none';
-            return;
-        }
-
-        let subgenres = new Set();
-        selectedGenres.forEach(genres => {
-            if (genres === 'fiction') {
-                ['Sci-Fi', 'Mystery', 'Thriller', 'Romance', "Children's Books"].forEach(sg => subgenres.add(sg));
-            } else if (genres === 'non-fiction') {
-                ['Biography', 'Self Help', 'History', 'Science', 'Religion', 'Travel'].forEach(sg => subgenres.add(sg));
-            } else if (genres === 'graphic-novels') {
-                ['Comics', 'Manga'].forEach(sg => subgenres.add(sg));
-            }
-        });
-
-        if (subgenres.size > 0) {
-            subgenreFilterContainer.style.display = 'block';
-            Array.from(subgenres).forEach(subgenre => {
-                const li = document.createElement('li');
-                const checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.id = subgenre.toLowerCase().replace(' ', '-');
-                checkbox.name = 'subgenre';
-                checkbox.value = subgenre.toLowerCase();
-
-                const label = document.createElement('label');
-                label.htmlFor = checkbox.id;
-                label.textContent = subgenre;
-
-                li.appendChild(checkbox);
-                li.appendChild(label);
-                subgenreFilter.appendChild(li);
-            });
-        } else {
-            subgenreFilterContainer.style.display = 'none';
-        }
-    }
-
-
-    function updatePriceRangeValue() {
-        const value = priceRange.value;
-        priceRangeValue.textContent = `$${value} - $100`;
-    }
-
-    priceRange.addEventListener('input', updatePriceRangeValue);
-    updatePriceRangeValue();
-
-    function updatePagination() {
-        currentPageSpan.textContent = `Page ${currentPage} of ${Math.ceil(totalBooks / booksPerPage)}`;
-        prevPageBtn.disabled = currentPage === 1;
-        nextPageBtn.disabled = currentPage === Math.ceil(totalBooks / booksPerPage);
-    }
-
-    function fetchBooks() {
-        const books = [];
-        const startIndex = (currentPage - 1) * booksPerPage;
-        const endIndex = Math.min(startIndex + booksPerPage, totalBooks);
-        for (let i = startIndex + 1; i <= endIndex; i++) {
-            books.push({
-                title: `Book ${i}`,
-                author: `Author ${i}`,
-                price: Math.floor(Math.random() * 50) + 10,
-                rating: Math.floor(Math.random() * 5) + 1
-            });
-        }
+        return response.json();
+      })
+      .then((data) => {
+        books = data;
+        filteredBooks = books;
         return books;
+      })
+      .catch((error) => console.error('Error fetching book data:', error));
+  }
+
+  function renderBooks(bookList) {
+    const bookGrid = document.getElementById("book-grid");
+    bookGrid.innerHTML = ""; 
+
+    const startIndex = (currentPage - 1) * booksPerPage;
+    const endIndex = startIndex + booksPerPage;
+
+    const booksToDisplay = bookList.slice(startIndex, endIndex);
+
+    booksToDisplay.forEach((book) => {
+      const bookCard = document.createElement("div");
+      bookCard.className = "book-card";
+      bookCard.innerHTML = `
+        <img src="${book.image}" alt="${book.title}" class="book-cover">
+        <div class="book-info">
+            <h3 class="book-title">${book.title}</h3>
+            <p class="book-author">${book.author || "Unknown"}</p>
+            <p class="book-price">$${book.price.toFixed(2)}</p>
+        </div>
+        <div class="book-actions">
+            <button class="add-to-cart" onclick="addToCart('${book.title}')">Add to Cart</button>
+            <button class="wishlist" onclick="addToWishlist('${book.title}')">Add to Wishlist</button>
+        </div>
+      `;
+      bookGrid.appendChild(bookCard);
+    });
+  }
+
+  function updatePagination() {
+    const totalPages = Math.ceil(filteredBooks.length / booksPerPage);
+    const totalPagesText = document.getElementById("total-pages");
+    const currentPageText = document.getElementById("current-page");
+
+    totalPagesText.textContent = totalPages;
+    currentPageText.textContent = currentPage;
+
+    document.getElementById("next-page").disabled = currentPage === totalPages;
+    document.getElementById("prev-page").disabled = currentPage === 1;
+  }
+
+  document.getElementById("next-page").addEventListener("click", () => {
+    const totalPages = Math.ceil(filteredBooks.length / booksPerPage);
+    if (currentPage < totalPages) {
+      currentPage++;
+      renderBooks(filteredBooks);
+      updatePagination();
     }
+  });
 
-    function displayBooks(books) {
-        bookGrid.innerHTML = '';
-        books.forEach(book => {
-            const bookElement = document.createElement('div');
-            bookElement.classList.add('book-item');
-            bookElement.innerHTML = `
-                <h3>${book.title}</h3>
-                <p>${book.author}</p>
-                <p>$${book.price.toFixed(2)}</p>
-                <p>Rating: ${'★'.repeat(book.rating)}${'☆'.repeat(5 - book.rating)}</p>
-                <button>Add to Cart</button>
-            `;
-            bookGrid.appendChild(bookElement);
-        });
+  document.getElementById("prev-page").addEventListener("click", () => {
+    if (currentPage > 1) {
+      currentPage--;
+      renderBooks(filteredBooks);
+      updatePagination();
     }
+  });
 
-    function applyFilters() {
-        console.log('Applying filters...');
-        console.log('Price range:', priceRange.value);
-        console.log('Rating filter:', ratingFilter.value);
-        if (genreFilterContainer.style.display !== 'none') {
-            console.log('Selected genres:', Array.from(document.querySelectorAll('#genre-filter input:checked')).map(cb => cb.value));
-        }
-        if (subgenreFilterContainer.style.display !== 'none') {
-            console.log('Selected subgenres:', Array.from(document.querySelectorAll('#subgenre-filter input:checked')).map(cb => cb.value));
-        }
-        currentPage = 1;
-        const books = fetchBooks();
-        displayBooks(books);
-        updatePagination();
-    }
+  /* Filtering Functionality */
+  function filterBooks() {
+    const selectedGenres = Array.from(document.querySelectorAll('.filter-checkbox[data-genre]:checked'))
+      .map(cb => cb.dataset.genre);
+    const selectedSubgenres = Array.from(document.querySelectorAll('.subgenre-filter-checkbox:checked'))
+      .map(cb => cb.parentElement.textContent.trim());
+    const selectedLanguages = Array.from(document.querySelectorAll('.filter-section-language .filter-checkbox:checked'))
+      .map(cb => cb.parentElement.textContent.trim().toLowerCase());
+    const selectedYearRanges = Array.from(document.querySelectorAll('.filter-section-year .filter-checkbox:checked'))
+      .map(cb => cb.parentElement.textContent.trim());
+    const maxPrice = parseFloat(document.getElementById('price-range').value);
 
-    applyFiltersBtn.addEventListener('click', applyFilters);
+    filteredBooks = books.filter(book => {
+      const genreMatch = selectedGenres.length === 0 || selectedGenres.includes(book.genre);
+      const subgenreMatch = selectedSubgenres.length === 0 || selectedSubgenres.includes(book.subgenre);
+      const languageMatch = selectedLanguages.length === 0 || selectedLanguages.includes(book.language.toLowerCase());
+      const yearMatch = selectedYearRanges.length === 0 || selectedYearRanges.some(range => matchYearRange(book.publication_year, range));
+      const priceMatch = book.price <= maxPrice;
 
-    sortSelect.addEventListener('change', function () {
-        console.log('Sorting by:', this.value);
-        const books = fetchBooks();
-        // Sort books based on selected option
-        displayBooks(books);
+      return genreMatch && subgenreMatch && languageMatch && yearMatch && priceMatch;
     });
 
-    prevPageBtn.addEventListener('click', function () {
-        if (currentPage > 1) {
-            currentPage--;
-            const books = fetchBooks();
-            displayBooks(books);
-            updatePagination();
-        }
-    });
-
-    nextPageBtn.addEventListener('click', function () {
-        if (currentPage < Math.ceil(totalBooks / booksPerPage)) {
-            currentPage++;
-            const books = fetchBooks();
-            displayBooks(books);
-            updatePagination();
-        }
-    });
-
-    // Initial load
-    const initialBooks = fetchBooks();
-    displayBooks(initialBooks);
+    currentPage = 1;
+    renderBooks(filteredBooks);
     updatePagination();
+
+    // Update URL with current filters
+    const urlParams = new URLSearchParams(window.location.search);
+    if (selectedGenres.length > 0) {
+      urlParams.set('genre', selectedGenres[0]); // Assuming single genre selection
+    } else {
+      urlParams.delete('genre');
+    }
+
+    const newURL = `${window.location.pathname}?${urlParams.toString()}`;
+    history.pushState(null, '', newURL);
+  }
+
+  function matchYearRange(year, range) {
+    if (range === '2020-2024') return year >= 2020 && year <= 2024;
+    if (range === '2015-2019') return year >= 2015 && year <= 2019;
+    if (range === 'Before 2015') return year < 2015;
+    return false;
+  }
+
+  document.querySelectorAll('.filter-checkbox, .subgenre-filter-checkbox').forEach(checkbox => {
+    checkbox.addEventListener('change', filterBooks);
+  });
+
+  document.getElementById('price-range').addEventListener('input', () => {
+    document.getElementById('price-max').textContent = `$${document.getElementById('price-range').value}`;
+    filterBooks();
+  });
+
+  /* Apply Filters from URL */
+  function applyFiltersFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedGenre = urlParams.get('genre');
+
+    if (selectedGenre) {
+      genreCheckboxes.forEach(checkbox => {
+        if (checkbox.getAttribute('data-genre') === selectedGenre) {
+          checkbox.checked = true;
+          const event = new Event('change');
+          checkbox.dispatchEvent(event);
+        } else {
+          checkbox.checked = false;
+        }
+      });
+    }
+  }
+
+  // Fetch books, then apply filters and render
+  fetchBooks().then(() => {
+    applyFiltersFromURL();
+    if (filteredBooks.length === books.length) {
+      renderBooks(books);
+      updatePagination();
+    }
+  });
 });
-
-
-
-
 
