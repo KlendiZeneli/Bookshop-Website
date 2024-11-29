@@ -1,67 +1,370 @@
+/*-------------------- Main Content --------------------*/
+.main-content {
+    margin: 0;
+    padding: 0;
+    transition: margin-left 0.3s ease-in-out;
+}
 
-main {
+.content-wrapper {
     display: flex;
-    padding: 20px;
-    gap: 20px;
+    position: relative;
 }
 
-.browse-options {
-    flex: 1;
-    max-width: 250px;
+
+
+
+/*-------------------- Header --------------------*/
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+    background-color: var(--author-nook-bg);
+    padding: 0.3rem;
 }
-/* Filter Styles */
+
+.filter-toggle-button {
+    padding: 0.5rem 1rem;
+    font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: var(--section-title-color);
+    color: white;
+    border: none;
+}
+
+.filter-toggle-button:hover {
+    background-color: var(--items-button-hover);
+}
+
+
+
+
+/*-------------------- Book Grid --------------------*/
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    padding: 1rem; 
+    background-color: var(--main-bg);
+    border-radius: 0.5rem;
+    min-height: 700px;
+    margin: 0 auto; 
+    width: 100%; 
+    max-width: 100%; 
+}
+
+.book-grid.shifted {
+    margin-left: 300px; 
+    max-width: calc(100% - 276px);
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.book-card {
+    background-color: var(--author-nook-bg);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 450px;
+    max-height: 400px;
+    margin: 0 auto;
+}
+
+.book-card:hover {
+    transform: scale(1.05);
+}
+
+.book-cover {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+}
+
+.book-title {
+    font-size: 1.2rem;
+    font-family: 'Glass Antiqua', cursive;
+    font-weight: bold;
+    margin: 0.2rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.book-info {
+    padding: 0.3rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.book-author,
+.book-price {
+    font-size: 0.875rem;
+    font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
+    margin: 0.1rem 0;
+    color: #555;
+}
+
+.book-actions {
+    display: flex;
+    height: 15%;
+}
+
+.add-to-cart,
+.wishlist {
+    flex: 1;
+    padding: 0.5rem;
+    background-color: var(--section-title-color);
+    font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart:hover {
+    background-color: var(--items-button-hover);
+}
+
+.wishlist {
+    background-color: var(--tertiary-bg);
+}
+
+.wishlist:hover {
+    background-color: var(--hover-bg);
+}
+
+
+
+
+/*-------------------- Filter Menu --------------------*/
+.filter-menu {
+    position: absolute;
+    top: 0;
+    left: -256px;
+    bottom: 0;
+    width: 256px;
+    background-color: var(--secondary-bg);
+    color: white;
+    padding: 1rem;
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+    transform: translateX(-100%);
+}
+
+.filter-menu.open ~ .book-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.filter-menu.open {
+    transform: translateX(256px)
+}
+
+.content-wrapper {
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.filter-title {
+    font-size: 2.2rem;
+    font-family: 'Glass Antiqua', cursive;
+    color: var(--dropdown-text-color);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
 .filter-section {
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 5px;
+    margin-bottom: 1.5rem;
+}
+
+.filter-group-title {
+    font-weight: 500;
+    font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
+    color: var(--dropdown-text-color);
+    margin-bottom: 0.5rem;
 }
 
 .filter-group {
-    margin-bottom: 15px;
+    display: flex;
+    font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.filter-group h4 {
-    margin-bottom: 5px;
+
+
+
+/*-------------------- Checkbox container --------------------*/
+.filter-checkbox, .subgenre-filter-checkbox {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: white;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    position: relative;
+    border-radius: 2px;
+    display: inline-block;
+    vertical-align: middle;
 }
 
-.filter-group ul {
-    list-style: none;
-    padding: 0;
+.filter-checkbox:checked, .subgenre-filter-checkbox:checked {
+    background-color: var(--primary-bg);
+    border-color: var(--primary-bg);
 }
 
-.filter-group li {
-    margin-bottom: 5px;
+.filter-checkbox:checked::after, .subgenre-filter-checkbox:checked::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 0px;
+    width: 6px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
 }
 
-#apply-filters {
+.subgenre-group {
+    display: none;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-left: 1rem;
+    border-left: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.range-slider {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
+    height: 8px;
+    background: var(--primary-bg);
     border-radius: 5px;
     cursor: pointer;
 }
 
-.book-results {
-    flex: 3;
-}
-/* Sort Styles */
-.sort-options {
-    margin-bottom: 15px;
-}
-
-.book-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+.range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--primary-bg);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid; 
 }
 
-/* Pagination Styles */
+.price-range-display {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.subgenre-group.visible {
+    display: flex;
+}
+  
+.filtered .filter-checkbox:not(:checked) + label {
+    display: none;
+}
+
+/*-------------------- Utility Classes --------------------*/
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+
+/*-------------------- Pagination --------------------*/
 .pagination {
-    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 0.5rem;
+    background-color: var(--author-nook-bg);
+    padding: 1rem;
+    margin-top: 0;
+}
+
+.pagination-button {
+    background-color: transparent;
+    width: 3rem; 
+    height: 2.3rem; 
+    color: var(--secondary-bg);
+    border: 2px solid var(--secondary-bg); 
+    border-radius: 0.75rem; 
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem; 
+}
+
+.pagination-button:hover {
+    background-color: var(--hover-bg);
+    transform: scale(1.1); 
+}
+
+.pagination-text {
+    font-size: 0.875rem;
+    font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
+    color: white;
+}
+
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .filter-menu {
+        left: -256px;
+    }
+
+    .filter-menu.open {
+        left: 0;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .main-content.filters-open {
+        margin-left: 0;
+    }
+
+    .book-grid {
+        grid-template-columns: repeat(2, 1fr);
+        min-height: 500px; 
+    }
+    
+    .book-grid.shifted {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
