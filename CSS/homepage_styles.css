@@ -630,17 +630,10 @@ h2 {
     right: 10px;
 }
 
-i {
+/* i {
     color: #ffffff;
-}
+} */
 
-/* Footer styling */
-footer {
-    background-color: var(--primary-bg);
-    color: var(--text-color);
-    text-align: center;
-    padding: 20px 0;
-}
 
 /* Mobile devices styling */
 @media (max-width: 768px) {

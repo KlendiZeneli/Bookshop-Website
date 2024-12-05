@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Orders | Book Nook</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- For icons -->
+    <link rel="stylesheet" href="../CSS/personal.css">
+    <link rel="stylesheet" href="../CSS/footer.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Personal Orders</h1>
+
+        <h2>Customized Book Orders</h2>
+        <p>
+            At Book Nook, we understand that every reader has unique preferences. If you can't find the book you're looking for in our store, our <span class="highlight">Personal Orders</span> service is here to help. Whether it's a rare title, a limited edition, or an international publication, we can source it for you.
+        </p>
+
+        <h2>How It Works</h2>
+        <ul>
+            <li>Submit your request using the form below with the book's details, such as title, author, and ISBN (if available).</li>
+            <li>Provide your contact information so we can keep you updated on the status of your order.</li>
+            <li>We will search for the book and notify you once it's available.</li>
+            <li>Once the book is sourced, you can make the payment and choose your preferred delivery method.</li>
+        </ul>
+
+        <h2>Submit Your Request</h2>
+        <p>
+            Please fill out the form below to place your personal order. Our team will review your request and get back to you as soon as possible.
+        </p>
+
+        <form class="order-form" action="#" method="post">
+            <label for="full-name">Full Name</label>
+            <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+            <label for="book-details">Book Details</label>
+            <textarea id="book-details" name="book-details" rows="5" placeholder="Enter the book title, author, ISBN, and any other details" required></textarea>
+
+            <button type="submit">Submit Request</button>
+        </form>
+    </div>
+    <footer>
+      <div class="scroll-to-top">
+        <button onclick="scrollToTop()">↑</button>
+      </div>
+      <div class="footer-container">
+        <div class="footer-row">
+          <div class="footer-column">
+            <h3>Information</h3>
+            <ul>
+              <li><a href="../Footer_Files/ab-us.html">About Us</a></li>
+              <li><a href="../Footer_Files/blog.html">Blog</a></li>
+              <li><a href="../Footer_Files/detailed.html">Detailed</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Book Nook Plus</h3>
+            <ul>
+              <li><a href="../Footer_Files/loyalty.html">Loyalty Program</a></li>
+              <li><a href="../Footer_Files/discount.html">Discount Coupons</a></li>
+              <li><a href="../Footer_Files/personal.html">Personal Orders</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Help</h3>
+            <ul>
+              <li><a href="../Footer_Files/how-to-buy.html">How to Buy</a></li>
+              <li><a href="../Footer_Files/payment-methods.html">Payment Methods</a></li>
+              <li><a href="../Footer_Files/contact-us.html">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="social-icons">
+          <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="subscribe-section">
+          <h3>Subscribe to Our Newsletter</h3>
+          <form class="subscribe-form" action="#" method="POST">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit"><i class="fas fa-arrow-right"></i></button>
+          </form>
+          <div class="gift-card-button">
+            <button><a href="../Footer_Files/gift.html">Gift Card</a></button>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p> &copy; 2023 Book Nook. All rights reserved.</p>
+          <p><a href="../Footer_Files/terms-of-service.html">Terms of Service</a> | <a href="../HTML/privacy-policy.html">Privacy Policy</a></p>
+        </div>
+      </div>
+    </footer>
+  
+    <script>
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    </script>
+</body>
+</html>
