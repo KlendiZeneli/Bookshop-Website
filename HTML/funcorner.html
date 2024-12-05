@@ -1,111 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Nook - Browse</title>
-    <link rel="stylesheet" href="../CSS/common_styles.css">
-    <link rel="stylesheet" href="../CSS/funcorner.css">
-    <script src="https://kit.fontawesome.com/440c3cdfb0.js" crossorigin="anonymous"></script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>The BooK NooK</title>
+        <link rel="stylesheet" href="/CSS/homepage_styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Glass+Antiqua&family=Sunflower:wght@300;500;700&display=swap"
+          rel="stylesheet">
+        <link
+          href="https://fonts.googleapis.com/css2?family=Glass+Antiqua&family=Sunflower:wght@300;500;700&family=Hazel&family=Averia+Serif+Libre:wght@300;400;700&display=swap"
+          rel="stylesheet">
+        <script src="https://kit.fontawesome.com/440c3cdfb0.js" crossorigin="anonymous"></script>
+      </head>
 <body>
     <header>
-        <div class="top-header">
-            <div class="bookstore-name">Book Nook</div>
-            <div class="search-and-icons">
-                <div class="search">
-                    <input type="text" placeholder="Search" aria-label="Search books">
-                </div>
-                <div class="icons">
-                    <a href="#profile" class="icon">
-                        <div class="icon-circle">
-                            <i class="fa-solid fa-user" aria-hidden="true"></i>
-                        </div>
-                        <span>Profile</span>
-                    </a>
-                    <a href="#cart" class="icon">
-                        <div class="icon-circle">
-                            <i class="fa-solid fa-shopping-cart" aria-hidden="true"></i>
-                        </div>
-                        <span>Cart</span>
-                    </a>
-                </div>
-            </div>
+        <div class="container">
+          <div class="logo-title">
+            <img src="/IMG/BookStack.png" alt="BookStack" width="80" height="80">
+            <h1 class="logo-title-text">The BooK NooK</h1>
+          </div>
+          <div class="header-icons">
+            <a href="#profile" class="icon-link">
+              <div class="icon-circle">
+                <i class="fa-regular fa-user"></i>
+              </div>
+              <span class="icon-label">Profile</span>
+            </a>
+            <a href="#wishlist" class="icon-link">
+              <div class="icon-circle">
+                <i class="fa-regular fa-heart"></i>
+              </div>
+              <span class="icon-label">Wishlist</span>
+            </a>
+            <a href="#cart" class="icon-link">
+              <div class="icon-circle">
+                <i class="fa-solid fa-shopping-cart"></i>
+              </div>
+              <span class="icon-label">Cart</span>
+            </a>
+          </div>
         </div>
-        <nav>
-            <ul class="main-nav">
-                <li><a href="homepage_index.html">Home</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropbtn">Browse <i class="fa-solid fa-caret-down"></i></a>
-                    <ul class="dropdown-content">
-                        <li>
-                            <a href="browse_index.html?lang=albanian">Albanian Books</a>
-                            <ul>
-                                <li>
-                                    <a href="browse_index.html?lang=albanian&category=fiction">Fiction</a>
-                                    <ul>
-                                        <li><a href="browse_index.html?lang=albanian&category=fiction&subcategory=sci-fi">Sci-Fi</a></li>
-                                        <li><a href="browse_index.html?lang=albanian&category=fiction&subcategory=thriller">Thriller</a></li>
-                                        <li><a href="browse_index.html?lang=albanian&category=fiction&subcategory=mystery">Mystery</a></li>
-                                        <li><a href="browse_index.html?lang=albanian&category=fiction&subcategory=romance">Romance</a></li>
-                                        <li><a href="browse_index.html?lang=albanian&category=fiction&subcategory=childrens">Children's Books</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="browse_index.html?lang=albanian&category=non-fiction">Non-Fiction</a>
-                                    <ul>
-                                        <li><a href="browse_index.html?lang=albanian&category=non-fiction&subcategory=biography">Biography</a></li>
-                                        <li><a href="browse_index.html?lang=albanian&category=non-fiction&subcategory=self-help">Self Help</a></li>
-                                        <li><a href="browse_index.html?lang=albanian&category=non-fiction&subcategory=history">History</a></li>
-                                        <li><a href="browse_index.html?lang=albanian&category=non-fiction&subcategory=science">Science</a></li>
-                                        <li><a href="browse_index.html?lang=albanian&category=non-fiction&subcategory=religion">Religion</a></li>
-                                        <li><a href="browse_index.html?lang=albanian&category=non-fiction&subcategory=travel">Travel</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="browse_index.html?lang=english">English Books</a>
-                            <ul>
-                                <li>
-                                    <a href="browse_index.html?lang=english&category=fiction">Fiction</a>
-                                    <ul>
-                                        <li><a href="browse_index.html?lang=english&category=fiction&subcategory=sci-fi">Sci-Fi</a></li>
-                                        <li><a href="browse_index.html?lang=english&category=fiction&subcategory=thriller">Thriller</a></li>
-                                        <li><a href="browse_index.html?lang=english&category=fiction&subcategory=mystery">Mystery</a></li>
-                                        <li><a href="browse_index.html?lang=english&category=fiction&subcategory=romance">Romance</a></li>
-                                        <li><a href="browse_index.html?lang=english&category=fiction&subcategory=childrens">Children's Books</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="browse_index.html?lang=english&category=non-fiction">Non-Fiction</a>
-                                    <ul>
-                                        <li><a href="browse_index.html?lang=english&category=non-fiction&subcategory=biography">Biography</a></li>
-                                        <li><a href="browse_index.html?lang=english&category=non-fiction&subcategory=self-help">Self Help</a></li>
-                                        <li><a href="browse_index.html?lang=english&category=non-fiction&subcategory=history">History</a></li>
-                                        <li><a href="browse_index.html?lang=english&category=non-fiction&subcategory=science">Science</a></li>
-                                        <li><a href="browse_index.html?lang=english&category=non-fiction&subcategory=religion">Religion</a></li>
-                                        <li><a href="browse_index.html?lang=english&category=non-fiction&subcategory=travel">Travel</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="browse_index.html?lang=english&category=graphic-novels">Graphic Novels</a>
-                                    <ul>
-                                        <li><a href="browse_index.html?lang=english&category=graphic-novels&subcategory=comics">Comics</a></li>
-                                        <li><a href="browse_index.html?lang=english&category=graphic-novels&subcategory=manga">Manga</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="#events">Events</a></li>
-                <li><a href="specialpicks.html">Special Picks</a></li>
-                <li><a href="#loyalty">Loyalty Program</a></li>
-                <li><a href="funcorner.html">Fun Corner</a></li>
-            </ul>
-        </nav>
-    </header>
+      </header>
+    
+      <nav class="main-nav">
+        <div class="container">
+          <ul class="nav-links">
+            <li class="nav-item">
+              <a href="#" class="nav-link">Albanian Books</a>
+              <ul class="dropdown-menu">
+                <li><a href="#" class="dropdown-item">Fiction</a></li>
+                <li><a href="#" class="dropdown-item">Non-Fiction</a></li>
+                <li><a href="#" class="dropdown-item">Mystery</a></li>
+                <li><a href="#" class="dropdown-item">Sci-fi</a></li>
+                <li><a href="#" class="dropdown-item">Romance</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">English Books</a>
+              <ul class="dropdown-menu">
+                <li><a href="#" class="dropdown-item">Fiction</a></li>
+                <li><a href="#" class="dropdown-item">Non-fiction</a></li>
+                <li><a href="#" class="dropdown-item">Mystery</a></li>
+                <li><a href="#" class="dropdown-item">Sci-Fi</a></li>
+                <li><a href="#" class="dropdown-item">Romance</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a href="#" class="nav-link">Special Picks</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Gifts and Accessories</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Fun Nook</a></li>
+          </ul>
+          <div class="search-container">
+            <input type="text" placeholder="Find your new title" id="search-input" class="search-input">
+            <button id="search-button" aria-label="Search">
+              <i class="fa-solid fa-search"></i>
+            </button>
+          </div>
+          <button class="mobile-menu-button" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
 
     <main class="quiz-container">
         <div class="quiz-card">
@@ -148,38 +125,10 @@
         </div>
     </main>
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#help">Help</a></li>
-                    <li><a href="#terms">Terms of Service</a></li>
-                    <li><a href="#privacy">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Connect With Us</h4>
-                <ul class="social-links">
-                    <li><a href="#facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
-                    <li><a href="#twitter" aria-label="Twitter"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="#instagram" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Newsletter</h4>
-                <form class="newsletter-form">
-                    <label for="email" class="sr-only">Email address</label>
-                    <input type="email" id="email" placeholder="Enter your email" required>
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
+        <div class="container">
+          <p>&copy; 2023 BookNook. All rights reserved.</p>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2023 Book Nook. All rights reserved.</p>
-        </div>
-    </footer>
-    <script src="../JS/funcorner.js"></script>
+      </footer>
 </body>
 </html>
 
