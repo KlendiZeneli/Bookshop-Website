@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const booksPerPage = 12;
 
   function fetchBooks() {
-    return fetch('bookarray.json')
+    return fetch('/JSON/bookarray.json')
       .then((response) => {
         if (!response.ok) {
           throw new Error(`Failed to fetch data: ${response.status}`);
