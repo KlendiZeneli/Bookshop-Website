@@ -1,4 +1,4 @@
-/* Main Content */
+/*-------------------- Main Content --------------------*/
 .main-content {
     margin: 0;
     padding: 0;
@@ -10,94 +10,61 @@
     position: relative;
 }
 
-.book-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); 
-    gap: 1.5rem;
-    padding: 1rem;
-    background-color: #EDDDC4;
-    border-radius: 0.5rem;
-}
 
 
 
-/* Header */
+/*-------------------- Header --------------------*/
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #e2e8f0;
-    background-color: #AFA386;
+    background-color: var(--author-nook-bg);
     padding: 0.3rem;
-    border-bottom: 1px solid #e0e0e0;
 }
 
 .filter-toggle-button {
     padding: 0.5rem 1rem;
+    font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
     font-size: 0.875rem;
     font-weight: 500;
     border-radius: 0.25rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    background-color: #8B5633;
+    background-color: var(--section-title-color);
     color: white;
     border: none;
 }
 
 .filter-toggle-button:hover {
-    background-color: #976646;
+    background-color: var(--items-button-hover);
 }
 
-.sort-dropdown {
-    position: relative;
-    display: inline-block;
+
+
+
+/*-------------------- Book Grid --------------------*/
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    padding: 1rem; 
+    background-color: var(--main-bg);
+    border-radius: 0.5rem;
+    min-height: 700px;
+    margin: 0 auto; 
+    width: 100%; 
+    max-width: 100%; 
 }
 
-.filter-sort-button {
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    background-color: #485D1A;
-    color: white;
-    border: none;
+.book-grid.shifted {
+    margin-left: 300px; 
+    max-width: calc(100% - 276px);
+    grid-template-columns: repeat(3, 1fr);
 }
-
-.filter-sort-button:hover {
-    background-color: #5a7321;
-}
-
-.dropdown-sort {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-.dropdown-sort li {
-    padding: 10px 15px;
-}
-
-.dropdown-sort li:hover {
-    background-color: #f1f1f1;
-}
-
-.sort-item {
-    color: black;
-    text-decoration: none;
-    display: block;
-}
-
 
 .book-card {
-    background-color: #AFA386;
+    background-color: var(--author-nook-bg);
     border-radius: 0.5rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -106,7 +73,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
+    width: 100%;
+    max-width: 450px;
+    max-height: 400px;
+    margin: 0 auto;
 }
 
 .book-card:hover {
@@ -115,37 +85,47 @@
 
 .book-cover {
     width: 100%;
-    height: 200px;
+    height: 70%;
     object-fit: cover;
 }
 
-.book-info {
-    padding: 1rem;
-    flex-grow: 1;
+.book-title {
+    font-size: 1.2rem;
+    font-family: 'Glass Antiqua', cursive;
+    font-weight: bold;
+    margin: 0.2rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.book-title {
-    font-size: 1rem;
-    font-weight: bold;
-    margin: 0.5rem 0;
+.book-info {
+    padding: 0.3rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .book-author,
 .book-price {
     font-size: 0.875rem;
-    margin: 0.25rem 0;
+    font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
+    margin: 0.1rem 0;
     color: #555;
 }
 
 .book-actions {
     display: flex;
+    height: 15%;
 }
 
 .add-to-cart,
 .wishlist {
     flex: 1;
-    padding: 16px;
-    background-color: #8B5633;
+    padding: 0.5rem;
+    background-color: var(--section-title-color);
+    font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
     color: white;
     border: none;
     cursor: pointer;
@@ -153,66 +133,38 @@
 }
 
 .add-to-cart:hover {
-    background-color: #976646;
+    background-color: var(--items-button-hover);
 }
 
 .wishlist {
-    background-color: #485D1A;
+    background-color: var(--tertiary-bg);
 }
 
 .wishlist:hover {
-    background-color: #5a7321;
-}
-
-
-
-/* Pagination */
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    background-color: #889063;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    margin-top: 0;
-}
-
-.pagination-button {
-    background-color: transparent;
-    border: 1px solid white;
-    color: white;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.pagination-button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-.pagination-text {
-    font-size: 0.875rem;
-    color: white;
+    background-color: var(--hover-bg);
 }
 
 
 
 
-/* Filter Menu */
+/*-------------------- Filter Menu --------------------*/
 .filter-menu {
     position: absolute;
     top: 0;
     left: -256px;
     bottom: 0;
     width: 256px;
-    background-color: #889063;
+    background-color: var(--secondary-bg);
     color: white;
     padding: 1rem;
     overflow-y: auto;
     transition: transform 0.3s ease-in-out;
     z-index: 1000;
+    transform: translateX(-100%);
+}
+
+.filter-menu.open ~ .book-grid {
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .filter-menu.open {
@@ -223,16 +175,10 @@
     transition: margin-left 0.3s ease-in-out;
 }
 
-.book-grid.shifted {
-    margin-left: 300px;
-}
-
-.book-grid.shifted {
-    grid-template-columns: repeat(4, 1fr);
-}
-
 .filter-title {
-    font-size: 1.2rem;
+    font-size: 2.2rem;
+    font-family: 'Glass Antiqua', cursive;
+    color: var(--dropdown-text-color);
     font-weight: 600;
     margin-bottom: 1rem;
 }
@@ -243,20 +189,26 @@
 
 .filter-group-title {
     font-weight: 500;
+    font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
+    color: var(--dropdown-text-color);
     margin-bottom: 0.5rem;
 }
 
 .filter-group {
     display: flex;
+    font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-/* Checkbox container */
+
+
+
+/*-------------------- Checkbox container --------------------*/
 .filter-checkbox, .subgenre-filter-checkbox {
-    appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+    appearance: none;
     background-color: white;
     width: 15px;
     height: 15px;
@@ -267,13 +219,11 @@
     vertical-align: middle;
 }
 
-/* Checkbox checked state */
 .filter-checkbox:checked, .subgenre-filter-checkbox:checked {
-    background-color: #283618;
-    border-color: #283618;
+    background-color: var(--primary-bg);
+    border-color: var(--primary-bg);
 }
 
-/* Checkbox checkmark */
 .filter-checkbox:checked::after, .subgenre-filter-checkbox:checked::after {
     content: '';
     position: absolute;
@@ -286,8 +236,6 @@
     transform: rotate(45deg);
 }
 
-
-/* Subgenre Group Styling */
 .subgenre-group {
     display: none;
     flex-direction: column;
@@ -296,16 +244,26 @@
     border-left: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Range Slider */
 .range-slider {
     -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     width: 100%;
     height: 8px;
-    background: #283618;
-    outline: none;
+    background: var(--primary-bg);
     border-radius: 5px;
-    overflow: hidden;
     cursor: pointer;
+}
+
+.range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--primary-bg);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid; 
 }
 
 .price-range-display {
@@ -315,7 +273,6 @@
     font-size: 0.875rem;
 }
 
-/* Hide checkboxes when filtered */
 .subgenre-group.visible {
     display: flex;
 }
@@ -324,7 +281,7 @@
     display: none;
 }
 
-/* Utility Classes */
+/*-------------------- Utility Classes --------------------*/
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -340,6 +297,48 @@
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
 }
+
+
+
+
+/*-------------------- Pagination --------------------*/
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--author-nook-bg);
+    padding: 1rem;
+    margin-top: 0;
+}
+
+.pagination-button {
+    background-color: transparent;
+    width: 3rem; 
+    height: 2.3rem; 
+    color: var(--secondary-bg);
+    border: 2px solid var(--secondary-bg); 
+    border-radius: 0.75rem; 
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem; 
+}
+
+.pagination-button:hover {
+    background-color: var(--hover-bg);
+    transform: scale(1.1); 
+}
+
+.pagination-text {
+    font-size: 0.875rem;
+    font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
+    color: white;
+}
+
+
 
 
 /* Responsive Design */
@@ -360,21 +359,12 @@
         margin-left: 0;
     }
 
-    .sort-dropdown {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-
-    .filter-sort-button {
-        width: 100%;
-        text-align: left;
-    }
-
-    .dropdown-sort {
-        width: 100%;
-    }
-
     .book-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
+        min-height: 500px; 
+    }
+    
+    .book-grid.shifted {
+        grid-template-columns: repeat(1, 1fr);
     }
 }
