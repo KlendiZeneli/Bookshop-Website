@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /*Carousel Functionality */
     function fetchBooks() {
-        return fetch('bookarray.json')
+        return fetch('/JSON/bookarray.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Failed to fetch data: ${response.status}`);
