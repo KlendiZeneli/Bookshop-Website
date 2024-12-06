@@ -1,21 +1,32 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+:root {
+  --primary-bg: #283618;
+  --secondary-bg: #889063;
+  --tertiary-bg: #485D1A;
+  --hover-bg: #5a7321;
+  --main-bg: #EDDDC4;
+  --text-color: #ffffff;
+  --dropdown-text-color: #f7d9c4;
+  --section-title-color: #8B5633;
+  --author-nook-bg: #AFA386;
+  --items-button-hover: #976646;
+  --link-text-color: #283618; /* Color for the text above the links (same as the button arrow color) */
+  --gift-card-button-text-color: #fff; /* Color for the gift card button text */
 }
 
+/* Footer Styles */
 footer {
-  background-color: #f9f9f9;
-  padding: 20px;
+  background-color: var(--author-nook-bg);
+  padding: 1rem;
   text-align: center;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #e2e8f0;
   position: relative;
+  color: var(--dropdown-text-color);
 }
 
 .footer-container {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 1rem;
 }
 
 .footer-row {
@@ -23,151 +34,165 @@ footer {
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .footer-column {
   flex: 1;
   min-width: 200px;
-  padding: 10px;
+  padding: 0.5rem;
 }
 
 .footer-column h3 {
-  margin-bottom: 10px;
-  font-size: 18px;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-family: 'Glass Antiqua', cursive;
+  color: var(--link-text-color); /* Color of the text above the links (same as the arrow button) */
 }
 
 .footer-column ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .footer-column ul li {
-  margin-bottom: 5px;
+  margin-bottom: 0.3rem;
 }
 
 .footer-column ul li a {
   text-decoration: none;
-  color: #333;
-  font-size: 14px;
+  color: var(--dropdown-text-color);
+  font-size: 0.875rem;
+  font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
 }
 
 .footer-column ul li a:hover {
+  color: var(--items-button-hover);
   text-decoration: underline;
 }
 
 .social-icons {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin-top: 10px;
+  gap: 1rem;
+  margin-top: 0.5rem;
 }
 
 .social-icons a {
   text-decoration: none;
-  font-size: 20px;
-  color: #333;
+  font-size: 1.25rem;
+  color: var(--dropdown-text-color);
   display: flex;
   align-items: center;
+  transition: color 0.3s ease;
 }
 
 .social-icons a:hover {
-  color: #0073e6;
+  color: var(--items-button-hover);
 }
 
 .scroll-to-top {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 1rem;
+  right: 1rem;
 }
 
 .scroll-to-top button {
-  background-color: #0073e6;
+  background-color: var(--primary-bg);
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 50%;
+  padding: 0.5rem;
+  border-radius: 50%; /* Fully rounded button */
   cursor: pointer;
-  font-size: 20px;
+  font-size: 1.25rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 50px;
+  height: 50px; /* Ensures the button is as round as possible */
 }
 
 .scroll-to-top button:hover {
-  background-color: #005bb5;
+  background-color: var(--hover-bg);
+  transform: scale(1.1);
 }
 
 .subscribe-section {
-  margin-top: 20px;
-  padding: 10px;
+  margin-top: 1rem;
+  padding: 0.5rem;
 }
 
 .subscribe-section h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-size: 1.2rem;
+  font-family: 'Glass Antiqua', cursive;
+  margin-bottom: 0.5rem;
 }
 
 .subscribe-form {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 0.5rem;
 }
 
 .subscribe-form input[type="email"] {
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  border: 1px solid var(--primary-bg);
+  border-radius: 0.25rem;
   width: 250px;
 }
 
 .subscribe-form button {
-  background-color: #0073e6;
+  background-color: var(--primary-bg);
   color: white;
   border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
   cursor: pointer;
-  font-size: 16px;
-}
-
-.subscribe-form button i {
-  font-size: 14px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
 }
 
 .subscribe-form button:hover {
-  background-color: #005bb5;
+  background-color: var(--items-button-hover);
 }
 
 .gift-card-button {
-  margin-top: 20px;
+  margin-top: 1rem;
+}
+
+.gift-card-button a {
+  text-decoration: none; /* Remove the underline from the link */
+  color: inherit; /* Inherit the button's color */
 }
 
 .gift-card-button button {
-  background-color: #333;
-  color: #fff;
+  background-color: var(--section-title-color);
+  color: white; /* Gift card button text color */
   border: none;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
   cursor: pointer;
-  border-radius: 5px;
-  text-decoration: none;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease;
 }
 
 .gift-card-button button:hover {
-  background-color: #555;
+  background-color: var(--items-button-hover);
 }
 
 .footer-bottom {
-  margin-top: 20px;
-  font-size: 14px;
-  color: #777;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: var(--dropdown-text-color);
 }
 
 .footer-bottom a {
   text-decoration: none;
-  color: #0073e6;
+  color: var(--items-button-hover);
+  font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
 }
 
 .footer-bottom a:hover {

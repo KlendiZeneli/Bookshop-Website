@@ -1,19 +1,99 @@
 <!DOCTYPE html>
-<html lang="sq">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout Flow</title>
-    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="/CSS/cart.css">
+    <title>The BooK NooK</title>
+    <link href="https://fonts.googleapis.com/css2?family=Glass+Antiqua&family=Sunflower:wght@300;500;700&display=swap"
+      rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Glass+Antiqua&family=Sunflower:wght@300;500;700&family=Hazel&family=Averia+Serif+Libre:wght@300;400;700&display=swap"
+      rel="stylesheet">
+    <script src="https://kit.fontawesome.com/440c3cdfb0.js" crossorigin="anonymous"></script>
 </head>
-<body>
-    <header>
+
+<header>
+  <div class="container">
+      <div class="logo-title">
+          <img src="/IMG/BookStack.png" alt="BookStack" width="80" height="80">
+          <h1 class="logo-title-text">The BooK NooK</h1>
+      </div>
+      <div class="header-icons">
+          <a href="#profile" class="icon-link">
+              <div class="icon-circle">
+                  <i class="fa-regular fa-user"></i>
+              </div>
+              <span class="icon-label">Profile</span>
+          </a>
+          <a href="#wishlist" class="icon-link">
+              <div class="icon-circle">
+                  <i class="fa-regular fa-heart"></i>
+              </div>
+              <span class="icon-label">Wishlist</span>
+          </a>
+          <a href="/HTML/cart.html" class="icon-link">
+              <div class="icon-circle">
+                  <i class="fa-solid fa-shopping-cart"></i>
+              </div>
+              <span class="icon-label">Cart</span>
+          </a>
+      </div>
+  </div>
+</header>
+
+<nav class="main-nav">
+  <div class="container">
+      <ul class="nav-links">
+          <li class="nav-item">
+              <a href="/HTML/homepage_index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item"><a href="#" class="nav-link">Special Picks</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Gifts and Accessories</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Events</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Fun Nook</a></li>
+      </ul>
+      <div class="search-container">
+          <input type="text" placeholder="Find your new title" id="search-input" class="search-input">
+          <button id="search-button" aria-label="Search">
+              <i class="fa-solid fa-search"></i>
+          </button>
+      </div>
+      <button class="mobile-menu-button" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+      </button>
+  </div>
+</nav>
+
+
+<div class="mobile-menu">
+  <ul class="mobile-nav-links">
+      <li class="nav-item">
+          <a href="/HTML/homepage_index.html" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item"><a href="#" class="nav-link">Special Picks</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Gifts and Accessories</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Events</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Fun Nook</a></li>
+  </ul>
+  <div class="mobile-search-container">
+      <input type="text" placeholder="Find your new title" class="search-input mobile-search-input">
+      <button class="mobile-search-button" aria-label="Mobile Search">
+          <i class="fa-solid fa-search"></i>
+      </button>
+  </div>
+</div>
+
+
+    <header class="cart_header">
         <span data-fn="app.app.cart.viewcart" data-ev="click" class="back"></span>
         <h2 id="page-title">My cart </address></h2>
         <span data-fn="app.app.cart.close" data-ev="click" class="close"></span>
     </header>
 
-    <div class="container">
+    <div class="cart_container">
         <div id="cart-view">
             <div id="cart-items"></div>
             <div class="summary-box">
@@ -78,7 +158,7 @@
                 <form id="billing-form" class="billing-form">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="firstname">First name *</label>
+                            <label  for="firstname" >First name *</label>
                             <input type="text" id="firstname" placeholder="Your name" required>
                         </div>
                         <div class="form-group">
@@ -100,53 +180,29 @@
                         <label for="notes">Notes regarding your order</label>
                         <textarea id="notes" placeholder="Put notes or necessary information about the items or their delivery in this field."></textarea>
                     </div>
+                    <div class="form-group">
+                      <label for="payment-method">Payment method *</label>
+                      <div class="payment-options">
+                          <label for="pay-cash">
+                              <input type="radio" id="pay-cash" name="payment-method" value="cash" required>
+                              Pay cash when you get the order
+                          </label>
+                      </div>
+                      </div>
                 </form>
             </div>
             <div class="summary-box">
                 <div id="billing-price-summary"></div>
             </div>
             <div class="confirmation-button-container">
-                <button id="payment-button" class="button-confirmation">Payment</button>
+                <button id="payment-button" class="button-confirmation">Confirm your order</button>
                 </div>
         </div>
-    </div>
-    <div id="payment-view" style="display: none;">
-        <div class="form-container">
-            <p class="info-text">
-                Please select your payment method.
-            </p>
-            
-            <div class="payment-methods">
-                <button class="payment-method" data-method="cash">
-                    <div class="payment-icon cash-icon"></div>
-                    <span>Cash</span>
-                </button>
-                <button class="payment-method" data-method="card">
-                    <div class="payment-icon card-icon"></div>
-                    <span>Debit card</span>
-                </button>
-                <button class="payment-method" data-method="paypal">
-                    <div class="payment-icon paypal-icon"></div>
-                    <span>Paypal</span>
-                </button>
-            </div>
-
-            <div class="promo-code">
-                <div class="promo-input">
-                    <input type="text" id="promo-code" placeholder="Promo code">
-                    <button id="apply-promo" class="button-secondary">Add</button>
-                </div>
-                <p class="promo-info">If you have a promo code, please add it here</p>
-            </div>
-        </div>
-        
-        <div class="summary-box">
-            <div id="payment-price-summary"></div>
-        </div>
-        <button id="confirm-payment" class="button-primary">Confirm your payment</button>
-    </div>
+    </div> 
+  </div>
+  </div>
+</div> 
 </div>
-<script src="cart.js"></script>
+<script src="/JS/cart.js"></script>
 </body>
 </html>
-

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Browse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Glass+Antiqua&family=Sunflower:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Glass+Antiqua&family=Sunflower:wght@300;500;700&family=Hazel&family=Averia+Serif+Libre:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/440c3cdfb0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/CSS/common-styles.css">
+    <link rel="stylesheet" href="/CSS/browser_styles.css">
+</head>
+
+
+
+
+<body>
+    <div id="header"></div>
+        <div class="main-content">
+            <div class="header">
+                <div class="sort-dropdown">
+                <button id="sort" class="filter-sort-button">Sort</button>
+                <div class="dropdown-items">
+                <ul class="dropdown-sort">
+                    <li><a href="#" class="sort-item">Relevance</a></li>
+                    <li><a href="#" class="sort-item">Oldest</a></li>
+                    <li><a href="#" class="sort-item">Newest</a></li>
+                </ul>
+                </div>
+                </div>
+                <button id="toggle-filter" class="filter-toggle-button">Open Filters</button>
+            </div>
+            <div class="content-wrapper">
+                <div id="filters-sidebar" , class="filter-menu">
+                    <h2 class="filter-title">Filters</h2>
+                    <div class="filter-section">
+                        <h3 class="filter-group-title">Genre</h3>
+                        <div class="filter-group">
+                            <label><input type="checkbox" class="filter-checkbox" data-genre="fiction"> Fiction</label>
+                            <div class="subgenre-group" id="fiction-subgenres">
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> Fantasy</label>
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> Sci-Fi</label>
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> Mystery</label>
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> Thriller</label>
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> Horror</label>
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> Romance</label>
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> Historical
+                                    Fiction</label>
+                            </div>
+                            <label><input type="checkbox" class="filter-checkbox" data-genre="non-fiction">
+                                Non-fiction</label>
+                            <div class="subgenre-group" id="non-fiction-subgenres">
+                                <label><input type="checkbox" class="subgenre-filter-checkbox">
+                                    Biography/Autobiography</label>
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> Self-help</label>
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> Travel</label>
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> History</label>
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> Religion</label>
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> Politics</label>
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> Science</label>
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> Philosophy</label>
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> Education</label>
+                            </div>
+                            <label><input type="checkbox" class="filter-checkbox" data-genre="graphic-novels"> Graphic
+                                Novels</label>
+                            <div class="subgenre-group" id="graphic-novels-subgenres">
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> Comics</label>
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> Manga</label>
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> Anthologies</label>
+                            </div>
+                            <label><input type="checkbox" class="filter-checkbox" data-genre="childrens-books">
+                                Children's Books</label>
+                            <div class="subgenre-group" id="childrens-books-subgenres">
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> Picture Books</label>
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> Bedtime Stories</label>
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> Fairy
+                                    Tales/Folklore</label>
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> Poetry/Rhyming
+                                    Books</label>
+                                <label><input type="checkbox" class="subgenre-filter-checkbox"> Interactive
+                                    Books</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-section-language">
+                        <h3 class="filter-group-title">Languages</h3>
+                        <div class="filter-group">
+                            <label><input type="checkbox" class="filter-checkbox"> Albanian</label>
+                            <label><input type="checkbox" class="filter-checkbox"> English</label>
+                        </div>
+                    </div>
+                    <div class="filter-section-year">
+                        <h3 class="filter-group-title">Publication Year</h3>
+                        <div class="filter-group">
+                            <label><input type="checkbox" class="filter-checkbox"> 2020-2023</label>
+                            <label><input type="checkbox" class="filter-checkbox"> 2015-2019</label>
+                            <label><input type="checkbox" class="filter-checkbox"> Before 2015</label>
+                        </div>
+                    </div>
+                    <div class="filter-section">
+                        <h3 class="filter-group-title">Price Range</h3>
+                        <input type="range" id="price-range" aria-label="price-range" min="0" max="100" value="100"
+                            class="range-slider">
+                        <div class="price-range-display">
+                            <span id="price-min">$0</span>
+                            <span id="price-max">$100</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-grid" id="book-grid">
+                    <!-- Book items will be dynamically inserted here -->
+                </div>
+            </div>
+            <div class="pagination">
+                <button class="pagination-button" id="prev-page">←</button>
+                <span class="pagination-text">Page <span id="current-page">1</span> of <span
+                        id="total-pages">5</span></span>
+                <button class="pagination-button" id="next-page">→</button>
+            </div>
+        </div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 BookNook. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="/JS/header.js"></script>
+    <script src="/JS/browse_script.js"></script>
+</body>
+
+</html>

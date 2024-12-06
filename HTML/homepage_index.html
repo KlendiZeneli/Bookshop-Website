@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The BooK NooK</title>
   <link rel="stylesheet" href="/CSS/homepage_styles.css">
+  <link rel="stylesheet" href="/CSS/common-styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Glass+Antiqua&family=Sunflower:wght@300;500;700&display=swap"
     rel="stylesheet">
   <link
@@ -18,7 +19,8 @@
   <div id="header"></div>
 
   <div class="banner-container">
-    <img src="/IMG/6772685.jpg" alt="World Book Day - April 23" class="banner-image">
+    <img src="/IMG/6772685.jpg" alt="World Book Day - April 23"
+      class="banner-image">
   </div>
   <main class="main-container">
     <div class="container">
@@ -34,41 +36,43 @@
         </p>
       </div>
 
+
       <section class="author-nook-container">
         <div class="title-nook-container">
           <h3>Author Nook</h3>
         </div>
         <div class="nook-container">
-        <div class="cards-container">
-          <div class="card">
-            <div class="glass glass-1">
-              <img src="/IMG/Emma.jpeg" alt="Book 1 image" />
-              <span class="card-text">Book 1</span>
+          <div class="cards-container">
+            <div class="card">
+              <div class="glass glass-1">
+                <img src="/IMG/Little Women.jpeg" alt="Book 1 image" />
+                <span class="card-text">Book 1</span>
+              </div>
+            </div>
+            <div class="card">
+              <div class="glass glass-2">
+                <img src="/IMG/Jane Eyre.jpg" alt="Book 2 image" />
+                <span class="card-text">Book 2</span>
+              </div>
+            </div>
+            <div class="card">
+              <div class="glass glass-3">
+                <img src="/IMG/Emma.jpeg" alt="Book 3 image" />
+                <span class="card-text">Book 3</span>
+              </div>
             </div>
           </div>
-          <div class="card">
-            <div class="glass glass-2">
-              <img src="/IMG/Little Women.jpeg" alt="Book 2 image" />
-              <span class="card-text">Book 2</span>
-            </div>
-          </div>
-          <div class="card">
-            <div class="glass glass-3">
-              <img src="/IMG/Pride and Prejudice.jpeg" alt="Book 3 image" />
-              <span class="card-text">Book 3</span>
-            </div>
+          <div class="nook-content">
+            <h3>Meet Bestselling Author Jane Doe</h3>
+            <p>Join us for an exclusive evening with Jane Doe, author of the critically acclaimed novel "Whispers in the
+              Wind". Get your book signed and participate in an engaging Q&A session.</p>
+            <p><strong>Date:</strong> July 15, 2023 | <strong>Time:</strong> 7:00 PM</p>
+            <p><strong>Location:</strong> Book Nook Store</p>
+            <button class="learn-more">Learn More</button>
           </div>
         </div>
-        <div class="nook-content">
-          <h3>Meet Bestselling Author Jane Doe</h3>
-          <p>Join us for an exclusive evening with Jane Doe, author of the critically acclaimed novel "Whispers in the
-            Wind". Get your book signed and participate in an engaging Q&A session.</p>
-          <p><strong>Date:</strong> July 15, 2023 | <strong>Time:</strong> 7:00 PM</p>
-          <p><strong>Location:</strong> Book Nook Store</p>
-          <button class="learn-more">Learn More</button>
-        </div>
-      </div>
       </section>
+
 
       <section class="book-carousel-hero">
         <div class="new-releases-container">
@@ -82,91 +86,13 @@
             <i class="fa-solid fa-chevron-right"></i>
           </button>
           <div class="carousel">
-            
-            <div class="book-card">
-              <img src="/IMG/The Great Gatsby.jpeg" alt="The Great Gatsby" class="book-image">
-              <div class="book-details">
-                <div class="book-title">The Great Gatsby</div>
-                <div class="book-price">
-                  <span class="original-price">$29.99</span>
-                </div>
-              </div>
-              <button class="add-to-cart" onclick="addToCart('The Great Gatsby')">Add to cart</button>
+             <!-- Book cards will be dynamically inserted here -->
             </div>
-            
-            <div class="book-card">
-              <img src="/IMG/To Kill A Mockingbird.jpeg" alt="To Kill a Mockingbird" class="book-image">
-              <div class="book-details">
-                <div class="book-title">To Kill a Mockingbird</div>
-                <div class="book-price">
-                  <span class="original-price">$24.99</span>
-                </div>
-              </div>
-              <button class="add-to-cart" onclick="addToCart('To Kill a Mockingbird')">Add to cart</button>
-              
-            </div>
-
-            <div class="book-card">
-              <img src="/IMG/1984.jpg" alt="1984" class="book-image">
-              <div class="book-details">
-                <div class="book-title">1984</div>
-                <div class="book-price">
-                  <span class="original-price">$26.99</span>
-                </div>
-              </div>
-              <button class="add-to-cart" onclick="addToCart('1984')">Add to cart</button>
-            
-            </div>
-            
-            <div class="book-card">
-              <img src="/IMG/Little Women.jpeg" alt="Little Women" class="book-image">
-              <div class="book-details">
-                <div class="book-title">Little Women</div>
-                <div class="book-price">
-                  <span class="original-price">$22.99</span>
-                </div>
-              </div>
-              <button class="add-to-cart" onclick="addToCart('Little Women')">Add to cart</button>
-            </div>
-            
-            <div class="book-card">
-              <img src="/IMG/Pride and Prejudice.jpeg" alt="Pride and Prejudice" class="book-image">
-              <div class="book-details">
-                <div class="book-title">Pride and Prejudice</div>
-                <div class="book-price">
-                  <span class="original-price">$22.99</span>
-                </div>
-              </div>
-              <button class="add-to-cart" onclick="addToCart('Pride and Prejudice')">Add to cart</button>
-            </div>
-            
-            <div class="book-card">
-              <img src="/IMG/Emma.jpeg" alt="Emma" class="book-image">
-              <div class="book-details">
-                <div class="book-title">Emma</div>
-                <div class="book-price">
-                  <span class="original-price">$22.99</span>
-                </div>
-              </div>
-              <button class="add-to-cart" onclick="addToCart('Emma')">Add to cart</button>
-            </div>
-           
-            <div class="book-card">
-              <img src="/IMG/Jane Eyre.jpg" alt="Jane Eyre" class="book-image">
-              <div class="book-details">
-                <div class="book-title">Jane Eyre</div>
-                <div class="book-price">
-                  <span class="original-price">$20.99</span>
-                </div>
-              </div>
-              <button class="add-to-cart" onclick="addToCart('Jane Eyre')">Add to cart</button>
-            </div>
-
-          </div>
         </div>
       </section>
     </div>
   </main>
+
 
   <div id="footer"></div>
   <script src="/JS/header.js"></script>
