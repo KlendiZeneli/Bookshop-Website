@@ -6,8 +6,15 @@
         <h1 class="logo-title-text">The BooK NooK</h1>
       </a>
     </div>
-    <div class="header-icons">
-      <a href="#profile" id="profile" class="icon-link">
+    <div class="header-icons" id="header-icons">
+      <!-- Dynamic content: login button or profile button -->
+      <a href="javascript:void(0)" id="login" class="icon-link" onclick="showLoginModal()" style="display: block;">
+        <div class="icon-circle">
+          <i class="fa-regular fa-user"></i>
+        </div>
+        <span class="icon-label">Login</span>
+      </a>
+      <a href="javascript:void(0)" id="profile" class="icon-link" onclick="showProfileModal()" style="display: none;">
         <div class="icon-circle">
           <i class="fa-regular fa-user"></i>
         </div>
@@ -28,4 +35,5 @@
     </div>
   </div>
 </header>
+
 
