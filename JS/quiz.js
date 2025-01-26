@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const timerDisplay = document.getElementById("time-left");
     const backButton = document.getElementById("back-btn");
     
-    let timer = 15 * 60; // 15 minutes in seconds
+    let timer = 10 * 60; // 15 minutes in seconds
     let timerInterval;
 
     // Function to start the timer
@@ -143,6 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Function to calculate results
+    // Function to calculate results
     function calculateResults() {
         let correctAnswers = 0;
         let totalQuestions = quiz.length;
@@ -154,15 +155,44 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-
         const score = (correctAnswers / totalQuestions) * 100;
-        if (score >= 70) {
-            alert(`You passed the quiz! Your score: ${score}%`);
-        } else {
-            alert(`You failed the quiz. Your score: ${score}%`);
-        }
+        const message = score >= 70
+            ? `Congratulations! You passed the quiz. Your score: ${score.toFixed(2)}%`
+            : `You failed the quiz. Your score: ${score.toFixed(2)}%`;
 
-        window.location.href = "homepage_index.html"; // Redirect to the homepage after alert
+        showModal(message);
+    }
+
+    // Function to show modal
+    function showModal(message) {
+        const modal = document.createElement('div');
+        modal.classList.add('modal');
+        modal.style.display = 'block'; // Show the modal
+
+        const modalContent = document.createElement('div');
+        modalContent.classList.add('modal-content');
+
+        const modalHeader = document.createElement('div');
+        modalHeader.classList.add('modal-header');
+        modalHeader.textContent = 'Quiz Results';
+
+        const modalBody = document.createElement('div');
+        modalBody.classList.add('modal-body');
+        modalBody.textContent = message;
+
+        const closeButton = document.createElement('button');
+        closeButton.classList.add('modal-close-btn');
+        closeButton.textContent = 'Close';
+        closeButton.addEventListener('click', function() {
+            modal.style.display = 'none';
+            window.location.href = 'homepage_index.html'; // Redirect to homepage
+        });
+
+        modalContent.appendChild(modalHeader);
+        modalContent.appendChild(modalBody);
+        modalContent.appendChild(closeButton);
+        modal.appendChild(modalContent);
+        document.body.appendChild(modal);
     }
 
     // Event listener for the submit button
@@ -175,11 +205,9 @@ document.addEventListener('DOMContentLoaded', function() {
     backButton.addEventListener("click", function(event) {
         event.preventDefault();
         clearInterval(timerInterval);
-        window.location.href="funcorner.html";
+        window.location.href = "funcorner.html";
     });
 
     // Start the timer when the page loads
     startTimer();
-
-
 });

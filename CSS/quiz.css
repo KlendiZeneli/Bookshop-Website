@@ -1,6 +1,6 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background: #f5f5f5;
+    font-family: 'Glass Antique', sans-serif;
+    background: #EDDDC4;
     color: #333;
     margin: 0;
     padding: 0;
@@ -10,9 +10,10 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #007bff;
+    background: #283618;
     color: white;
     padding: 20px;
+    font-family: 'Glass Antique', sans-serif;
 }
 
 #header-controls {
@@ -26,20 +27,23 @@ header {
 #back-btn {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #007bff;
+    background-color: #283618;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-family: 'Glass Antique', sans-serif;
 }
 
 #back-btn:hover {
-    background-color: #0056b3;
+    background-color: #889063;
+    font-family: 'Glass Antique', sans-serif;
 }
 
 #timer {
     font-weight: bold;
+    font-family: 'Glass Antique', sans-serif;
 }
 
 main {
@@ -60,15 +64,21 @@ form {
 .question {
     flex: 1 1 calc(50% - 20px);
     margin: 0 10px;
+    color: #2F4F2F; /* Dark green */
 }
 
 .question p {
     font-size: 1.2em;
     margin-bottom: 10px;
+    color: #2F4F2F; /* Dark green */
 }
 
 input[type="radio"] {
     margin-right: 10px;
+}
+
+input[type="radio"]:checked {
+    accent-color: #2F4F2F; /* Dark green */
 }
 
 @media (max-width: 768px) {
@@ -76,12 +86,6 @@ input[type="radio"] {
         flex: 1 1 100%;
     }
 }
-
-
-
-
-
-
 
 button[type="submit"] {
     display: block;
@@ -100,8 +104,6 @@ button[type="submit"]:hover {
     background: #0056b3;
 }
 
-
-
 #submit-btn {
     display: block;
     width: 100%;
@@ -119,3 +121,52 @@ button[type="submit"]:hover {
 #submit-btn:hover {
     background-color: #218838;
 }
+
+/* Styles for the modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    
+    position: absolute; /* Absolute positioning for centering */
+    top: 50%; /* Position at 50% from the top */
+    left: 50%; /* Position at 50% from the left */
+    transform: translate(-50%, -50%); /* Adjust to center the modal */
+}
+
+.modal-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.modal-body {
+    margin-bottom: 20px;
+}
+
+.modal-close-btn {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.modal-close-btn:hover {
+    background-color: #45a049;
+}
+
