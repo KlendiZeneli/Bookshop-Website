@@ -1,14 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Load the header and navbar dynamically, ensuring loadModal starts after both are done
-Promise.all([
-    loadHTML("/Bookshop-Website-main/HTML/header.html", "header"),
-    loadHTML("/Bookshop-Website-main/HTML/nav.html", "navbar", setupNavbar)
-]).then(() => {
-    // After both HTML parts are loaded, execute loadModal
-    loadModal();
-}).catch(error => {
-    console.error("Error loading header or navbar:", error);
-});
+    Promise.all([
+        loadHTML("/Bookshop-Website-main/HTML/header.html", "header"),
+        loadHTML("/Bookshop-Website-main/HTML/nav.html", "navbar", setupNavbar)
+    ]).then(() => {
+        // After both HTML parts are loaded, execute loadModal
+        loadModal();
+    }).catch(error => {
+        console.error("Error loading header or navbar:", error);
+    });
 
     /**
      * Load HTML content into a specified container.
@@ -37,7 +37,7 @@ Promise.all([
                 });
         });
     }
-    
+
 
     /**
      * Setup Navbar: Dynamic links and dropdown functionality.
@@ -59,7 +59,7 @@ Promise.all([
             let linksHTML = "";
 
             if (currentPage.includes("homepage_index.html")) {
-            linksHTML = `
+                linksHTML = `
                 <li class="nav-item"><a href="/Bookshop-Website-main/HTML/browser_index.html" class="nav-link dropdown-toggle">Browse Books</a>
                 <ul class="dropdown-menu">
                     <li><a href="/Bookshop-Website-main/HTML/browser_index.html?genre=fiction" class="dropdown-item">Fiction</a></li>
@@ -74,7 +74,7 @@ Promise.all([
                 <li class="nav-item"><a href="/Bookshop-Website-main/HTML/funcorner.html" class="nav-link">Fun Nook</a></li>
             `;
             } else if (currentPage.includes("browser_index.html")) {
-            linksHTML = `
+                linksHTML = `
                 <li class="nav-item"><a href="/Bookshop-Website-main/HTML/homepage_index.html" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="/Bookshop-Website-main/HTML/specialpicks.html" class="nav-link">Special Picks</a></li>
                 <li class="nav-item"><a href="/Bookshop-Website-main/Footer_Files/gift.html" class="nav-link">Gifts and Accessories</a></li>
@@ -82,7 +82,7 @@ Promise.all([
                 <li class="nav-item"><a href="/Bookshop-Website-main/HTML/funcorner.html" class="nav-link">Fun Nook</a></li>
             `;
             } else if (currentPage.includes("specialpicks.html")) {
-            linksHTML = `
+                linksHTML = `
                 <li class="nav-item"><a href="/Bookshop-Website-main/HTML/homepage_index.html" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="/Bookshop-Website-main/HTML/browser_index.html" class="nav-link dropdown-toggle">Browse Books</a>
                 <ul class="dropdown-menu">
@@ -97,7 +97,7 @@ Promise.all([
                 <li class="nav-item"><a href="/Bookshop-Website-main/HTML/funcorner.html" class="nav-link">Fun Nook</a></li>
             `;
             } else if (currentPage.includes("gift.html")) {
-            linksHTML = `
+                linksHTML = `
                 <li class="nav-item"><a href="/Bookshop-Website-main/HTML/homepage_index.html" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="/Bookshop-Website-main/HTML/browser_index.html" class="nav-link dropdown-toggle">Browse Books</a>
                 <ul class="dropdown-menu">
@@ -112,7 +112,7 @@ Promise.all([
                 <li class="nav-item"><a href="/Bookshop-Website-main/HTML/funcorner.html" class="nav-link">Fun Nook</a></li>
             `;
             } else if (currentPage.includes("events.html")) {
-            linksHTML = `
+                linksHTML = `
                 <li class="nav-item"><a href="/Bookshop-Website-main/HTML/homepage_index.html" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="/Bookshop-Website-main/HTML/browser_index.html" class="nav-link dropdown-toggle">Browse Books</a>
                 <ul class="dropdown-menu">
@@ -127,7 +127,7 @@ Promise.all([
                 <li class="nav-item"><a href="/Bookshop-Website-main/HTML/funcorner.html" class="nav-link">Fun Nook</a></li>
             `;
             } else if (currentPage.includes("funcorner.html")) {
-            linksHTML = `
+                linksHTML = `
                 <li class="nav-item"><a href="/Bookshop-Website-main/HTML/homepage_index.html" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="/Bookshop-Website-main/HTML/browser_index.html" class="nav-link dropdown-toggle">Browse Books</a>
                 <ul class="dropdown-menu">
@@ -144,7 +144,7 @@ Promise.all([
             }
             navLinksContainer.innerHTML = linksHTML;
         }
-        
+
     }
 
     /* Setup Dropdown Functionality*/
@@ -218,27 +218,27 @@ Promise.all([
         }
     }
 
-     // Add event listeners for search after the header is injected
-     const searchInput = document.getElementById('search-input');
-     const searchButton = document.getElementById('search-button');
+    // Add event listeners for search after the header is injected
+    const searchInput = document.getElementById('search-input');
+    const searchButton = document.getElementById('search-button');
 
-     if (searchButton && searchInput) {
-         searchButton.addEventListener('click', () => {
-             performSearchRedirect(searchInput.value);
-         });
+    if (searchButton && searchInput) {
+        searchButton.addEventListener('click', () => {
+            performSearchRedirect(searchInput.value);
+        });
 
-         searchInput.addEventListener('keypress', (e) => {
-             if (e.key === 'Enter') {
-                 performSearchRedirect(searchInput.value);
-             }
-         });
-     }
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                performSearchRedirect(searchInput.value);
+            }
+        });
+    }
 
-     createModal();
-     const profileIcon = document.querySelector('#profile'); // Adjust this as needed
-     if (profileIcon) {
- profileIcon.addEventListener('click', showModal);
-}
+    createModal();
+    const profileIcon = document.querySelector('#profile'); // Adjust this as needed
+    if (profileIcon) {
+        profileIcon.addEventListener('click', showModal);
+    }
 
 });
 
@@ -264,7 +264,7 @@ function createModal() {
 
     modalContainer.innerHTML = `
         <span class="close-btn">&times;</span>
-        <h3>Login</h3>
+        <h3>Login to an account to access your profile</h3>
         <form id="loginForm">
             <input type="text" id="loginEmail" placeholder="Email" required>
             <input type="password" id="loginPassword" placeholder="Password" required>
@@ -317,7 +317,7 @@ function showLoginForm() {
     const modalContainer = document.querySelector('.modal-container');
     modalContainer.innerHTML = `
         <span class="close-btn">&times;</span>
-        <h3>Login</h3>
+        <h3>Login to an account to access your profile</h3>
         <form id="loginForm">
             <input type="text" id="loginEmail" placeholder="Email" required>
             <input type="password" id="loginPassword" placeholder="Password" required>
@@ -348,105 +348,104 @@ function closeModal() {
 // Function to handle login form submission
 async function handleLogin() {
     const email = document.getElementById('loginEmail').value;
-const password = document.getElementById('loginPassword').value;
+    const password = document.getElementById('loginPassword').value;
 
-const loginData = {
-    identifier: email,  // Send email or username (identifier)
-    password: password,
-    rememberMe: false  // Optional: Handle if you want to implement "Remember Me"
-};
-
-try {
-    const response = await fetch('https://localhost:7221/api/Auth/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(loginData)
-    });
-
-    const data = await response.json();
-
-    if (response.ok) {
-        // Assuming the token is returned in the response as 'data.token' (adjust as per your backend response)
-        const token = data.token;
-
-        // Store the token in localStorage or sessionStorage (depends on your use case)
-        localStorage.setItem('jwtToken', token);
-
-        alert('Login Successful!');
-        closeModal();  // Close the modal after successful login
-    } else {
-        alert(data.message || 'Login failed!');
-    }
-} catch (error) {
-    console.error('Error during login:', error);
-    alert('An error occurred during login.');
-}
-
-}
-
-async function handleRegister() {
-    const username = document.getElementById('registerName').value;
-    const email = document.getElementById('registerEmail').value;
-    const password = document.getElementById('registerPassword').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
-
-    // Validation: Ensure all fields are filled in
-    if (!username || !email || !password || !confirmPassword) {
-        alert('Please fill in all fields.');
-        return;
-    }
-
-    // Validation: Check if passwords match
-    if (password !== confirmPassword) {
-        alert('Passwords do not match!');
-        return;
-    }
-
-    // Validate email format
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    if (!emailPattern.test(email)) {
-        alert('Please enter a valid email address.');
-        return;
-    }
-
-    // Prepare registration data
-    const registrationData = {
-        email: email,        // Mapping to the 'Email' expected by the backend
-        username: username,  // Mapping to the 'Username' expected by the backend        
-        password: password   // Password from the form
+    const loginData = {
+        identifier: email,  // Send email or username (identifier)
+        password: password,
+        rememberMe: false  // Optional: Handle if you want to implement "Remember Me"
     };
 
     try {
-        const response = await fetch('https://localhost:7221/api/Auth/register', { 
+        const response = await fetch('https://localhost:7221/api/Auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(registrationData)
+            body: JSON.stringify(loginData)
         });
 
         const data = await response.json();
 
         if (response.ok) {
-            alert('Registration Successful! Please check your email for confirmation.');
-            closeModal();
+            alert('Login Successful!');
+            closeModal();  // Close the modal after successful login
         } else {
-            alert(data.message || 'Registration failed! ' + (data.errors || 'Please try again.'));
+            alert(data || 'Login failed!');
         }
     } catch (error) {
-        console.error('Error during registration:', error);
-        alert('An error occurred during registration.');
+        console.error('Error during login:', error);
+        alert('An error occurred during login.');
     }
 }
 
-function loadModal () {
-    createModal();
-                
-     const profileIcon = document.querySelector('#profile'); 
-     console.log(profileIcon);// Adjust this as needed
-     if (profileIcon) {
- profileIcon.addEventListener('click', showModal);
+// Handle registration form submission
+function handleRegister() {
+    const name = document.getElementById('registerName').value;
+    const email = document.getElementById('registerEmail').value;
+    const password = document.getElementById('registerPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+
+    if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+    }
+
+    console.log('Registering with:', name, email, password);
+    alert('Registration Successful!');
+    closeModal();
 }
+
+    /*Check if the user is logged in (replace with your actual login check)
+    const isLoggedIn = checkLoginStatus();
+    if (isLoggedIn) {
+        showProfileButton();
+    } else {
+        showLoginButton();
+    }*/
+
+    // Function to check if the user is logged in (se di si mund tfunx u figure it out)
+
+
+    // Function to show the login button and hide the profile button
+    function showLoginButton() {
+        document.getElementById('login').style.display = 'block';
+        document.getElementById('profile').style.display = 'none';
+    }
+
+    // Function to show the profile button and hide the login button
+    function showProfileButton() {
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('profile').style.display = 'block';
+    }
+
+    // Simulate the login action 
+    function handleLogin(token) {
+        // Save token to localStorage (or wherever you're storing authentication data)
+        localStorage.setItem('userToken', token);
+
+        // After login, update the UI
+        showProfileButton();
+    }
+
+    // Add a logout functionality to clear the login status (optional)
+    function handleLogout() {
+        // Clear the token from localStorage
+        localStorage.removeItem('userToken');
+
+        // Show login button again
+        showLoginButton();
+    }
+
+
+
+
+function loadModal() {
+    createModal();
+
+    const profileIcon = document.querySelector('#login');
+    console.log(profileIcon);// Adjust this as needed
+    if (profileIcon) {
+        profileIcon.addEventListener('click', showModal);
+    }
 }
