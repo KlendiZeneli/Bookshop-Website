@@ -1,0 +1,90 @@
+
+
+/* Book Container */
+.book-results-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    background-color: #EDDDC4;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Book Card */
+.book-card {
+    flex: 0 0 calc(25% - 20px); /* Maintain consistent width */
+    max-width: 300px; /* Optional: Prevent cards from growing too large */
+    background-color: var(--secondary-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Book Image */
+.book-image {
+    width: 100%; /* Ensure the image spans the card's width */
+    aspect-ratio: 3 / 4; /* Maintain a 3:4 aspect ratio */
+    object-fit: cover; /* Prevent stretching */
+    display: block;
+}
+
+/* Book Details */
+.book-details {
+    padding: 15px;
+    text-align: center;
+    color: var(--text-color);
+    height: 100px; /* Fixed height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures consistent spacing for title and price */
+    align-items: center; /* Centers content horizontally */
+    overflow: hidden; /* Prevents content overflow if the title is too long */
+}
+
+/* Book Title */
+.book-title {
+    font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px; /* Smaller margin for spacing */
+    white-space: nowrap; /* Ensures text stays in one line */
+    overflow: hidden; /* Hides overflow text */
+    text-overflow: ellipsis; /* Adds "..." for overflowing text */
+}
+
+/* Book Price */
+.book-price {
+    font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
+    font-size: 16px;
+    color: var(--text-color);
+    margin-bottom: 0; /* Remove extra margin */
+}
+
+
+/* Add to Cart Button */
+.add-to-cart {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--primary-bg);
+    font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart:hover {
+    background-color: var(--hover-bg);
+}
