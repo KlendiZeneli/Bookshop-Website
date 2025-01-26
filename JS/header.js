@@ -348,52 +348,97 @@ function closeModal() {
 // Function to handle login form submission
 async function handleLogin() {
     const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
+const password = document.getElementById('loginPassword').value;
 
-    const loginData = {
-        identifier: email,  // Send email or username (identifier)
-        password: password,
-        rememberMe: false  // Optional: Handle if you want to implement "Remember Me"
-    };
+const loginData = {
+    identifier: email,  // Send email or username (identifier)
+    password: password,
+    rememberMe: false  // Optional: Handle if you want to implement "Remember Me"
+};
 
-    try {
-        const response = await fetch('https://localhost:7221/api/Auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(loginData)
-        });
+try {
+    const response = await fetch('https://localhost:7221/api/Auth/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(loginData)
+    });
 
-        const data = await response.json();
+    const data = await response.json();
 
-        if (response.ok) {
-            alert('Login Successful!');
-            closeModal();  // Close the modal after successful login
-        } else {
-            alert(data || 'Login failed!');
-        }
-    } catch (error) {
-        console.error('Error during login:', error);
-        alert('An error occurred during login.');
+    if (response.ok) {
+        // Assuming the token is returned in the response as 'data.token' (adjust as per your backend response)
+        const token = data.token;
+
+        // Store the token in localStorage or sessionStorage (depends on your use case)
+        localStorage.setItem('jwtToken', token);
+
+        alert('Login Successful!');
+        closeModal();  // Close the modal after successful login
+    } else {
+        alert(data.message || 'Login failed!');
     }
+} catch (error) {
+    console.error('Error during login:', error);
+    alert('An error occurred during login.');
 }
 
-// Handle registration form submission
-function handleRegister() {
-    const name = document.getElementById('registerName').value;
+}
+
+async function handleRegister() {
+    const username = document.getElementById('registerName').value;
     const email = document.getElementById('registerEmail').value;
     const password = document.getElementById('registerPassword').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
 
+    // Validation: Ensure all fields are filled in
+    if (!username || !email || !password || !confirmPassword) {
+        alert('Please fill in all fields.');
+        return;
+    }
+
+    // Validation: Check if passwords match
     if (password !== confirmPassword) {
         alert('Passwords do not match!');
         return;
     }
 
-    console.log('Registering with:', name, email, password);
-    alert('Registration Successful!');
-    closeModal();
+    // Validate email format
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
+
+    // Prepare registration data
+    const registrationData = {
+        email: email,        // Mapping to the 'Email' expected by the backend
+        username: username,  // Mapping to the 'Username' expected by the backend        
+        password: password   // Password from the form
+    };
+
+    try {
+        const response = await fetch('https://localhost:7221/api/Auth/register', { 
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(registrationData)
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert('Registration Successful! Please check your email for confirmation.');
+            closeModal();
+        } else {
+            alert(data.message || 'Registration failed! ' + (data.errors || 'Please try again.'));
+        }
+    } catch (error) {
+        console.error('Error during registration:', error);
+        alert('An error occurred during registration.');
+    }
 }
 
 function loadModal () {
