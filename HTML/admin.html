@@ -1,28 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page</title>
+    <title>Bookstore Admin</title>
+    <link rel="stylesheet" href="/Bookshop-Website-main/CSS/admin.css">
     <link rel="stylesheet" href="/Bookshop-Website-main/CSS/common_styles.css">
-    <link rel="stylesheet" href="/Bookshop-Website-main/CSS/homepage_styles.css">
-    <link rel="stylesheet" href="/Bookshop-Website-main/CSS/forms.css">
-    <link href="https://fonts.googleapis.com/css2?family=Glass+Antiqua&family=Sunflower:wght@300;500;700&display=swap"
-    rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Glass+Antiqua&family=Sunflower:wght@300;500;700&family=Hazel&family=Averia+Serif+Libre:wght@300;400;700&display=swap"
-    rel="stylesheet">
-  <script src="https://kit.fontawesome.com/440c3cdfb0.js" crossorigin="anonymous"></script>
-
 </head>
-<body>
-    <div id="header"></div> <!-- Your header from the previous code -->
-    <div id="navbar"></div> <!-- Your navbar from the previous code -->
-    
-    <!-- This is where the admin HTML will be injected -->
-    <div id="admin-container"></div>
 
+<body>
+    <div id="header"></div>
+    <div class="book-controls">
+        <h3>Book Management</h3>
+        <div class="controls">
+            <button id="addbtn" onclick="showForm('add')">Add New Book</button>
+            <button id="editbtn" onclick="showForm('edit')">Edit Book</button>
+            <button id="deletebtn" onclick="showForm('delete')">Delete Book</button>
+        </div>
+        
+        <!-- Add/Edit Book Form -->
+        <div id="bookForm" class="form-section">
+            <form id="bookFormData">
+                <h3 id="formTitle">Edit Book</h3>
+                <input type="hidden" id="bookId">
+
+                <div class="form-grid">
+                    <input type="text" id="ISBN" name="ISBN" placeholder="ISBN" required>
+                    <input type="text" id="title" name="Title" placeholder="Book Title" required>
+                    <input type="text" id="description" name="Description" placeholder="Description">
+                    <input type="text" id="language" name="Language" placeholder="Language" required>
+                    <input type="text" id="author" name="Author" placeholder="Author" required>
+                    <input type="number" id="noOfPages" name="NoOfPages" placeholder="Number of Pages" required>
+                    <input type="number" id="price" name="Price" placeholder="Price" step="0.01" required>
+                    <input type="text" id="coverURL" name="CoverURL" placeholder="Cover URL">
+                    <input type="text" id="genre" name="Genre" placeholder="Genre" required>
+                    <input type="text" id="subGenre" name="SubGenre" placeholder="Sub-Genre">
+                    <input type="text" id="publisher" name="Publisher" placeholder="Publisher" required>
+                    <input type="datetime-local" id="publishingDate" name="PublishingDate" placeholder="Publishing Date" required>
+                    <label for="newArrival">New Arrival:</label>
+                    <input type="checkbox" id="newArrival" name="NewArrival">
+                    <label for="awardWinner">Award Winner:</label>
+                    <input type="checkbox" id="awardWinner" name="AwardWinner">
+                    <label for="bestSeller">Best Seller:</label>
+                    <input type="checkbox" id="bestSeller" name="BestSeller">
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit">Save Book</button>
+                    <button type="button" onclick="hideForms()">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- ISBN Input Form -->
+        <div id="isbnForm" class="form-section">
+            <form id="isbnInputForm">
+                <h3>Enter ISBN</h3>
+                <input type="text" id="isbnInput" placeholder="Enter ISBN" required>
+                <div class="form-actions">
+                    <button type="submit">Submit</button>
+                    <button type="button" onclick="hideForms()">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Delete Confirmation -->
+        <div id="deleteConfirmation" class="form-section">
+            <h3>Confirm Deletion</h3>
+            <p id="bookDetails"></p>
+            <button onclick="confirmDelete()">Confirm Delete</button>
+            <button onclick="hideForms()">Cancel</button>
+        </div>
+    </div>
+    <div id="footer"></div>
     <script src="/Bookshop-Website-main/JS/header.js"></script>
     <script src="/Bookshop-Website-main/JS/admin.js"></script>
+    <script src="/Bookshop-Website-main/JS/footer.js"></script>
 </body>
+
 </html>
