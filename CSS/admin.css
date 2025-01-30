@@ -1,0 +1,158 @@
+/* Updated CSS */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+/* Book Controls Header Section */
+.book-controls {
+    background-color: var(--secondary-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    max-width: 1200px;
+}
+
+.book-controls h3 {
+    font-family: var(--font-secondary);
+    color: var(--section-title-color);
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--tertiary-bg);
+    padding-bottom: 1rem;
+}
+
+/* Controls Buttons */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.controls button {
+    background-color: var(--tertiary-bg);
+    color: var(--text-color);
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-secondary);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+#deletebtn {
+    background-color: var(--section-title-color);
+}
+
+.controls button:hover {
+    background-color: var(--hover-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Form sections */
+.forms-container {
+    margin-top: 1.5rem;
+    padding: 2rem;
+    background-color: var(--author-nook-bg);
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-section {
+    display: none;
+    margin: 1rem 0;
+    padding: 2rem;
+    background-color: var(--author-nook-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Full width of parent container */
+    box-sizing: border-box;
+}
+
+.active-form {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form grid layout */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Wider columns */
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+}
+
+.form-actions button {
+    background-color: var(--section-title-color);
+    color: var(--text-color);
+    padding: 0.6em 1.2em;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+/* Form action buttons */
+.form-actions button {
+    min-width: 120px;
+    max-width: 160px;
+    padding: 0.6em 1.2em;
+}
+
+/* Responsive adjustments */
+@media (min-width: 1200px) {
+    .book-controls {
+        padding: 2rem 4rem; /* More horizontal padding */
+    }
+    
+    .form-grid {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .book-controls {
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+    }
+    
+    button {
+        width: 100%;
+        padding: 1.2em 2em;
+    }
+}
