@@ -6,16 +6,15 @@ document.addEventListener('DOMContentLoaded', function () {
     ]).then(() => {
         // After both HTML parts are loaded, execute loadModal
         isAuthenticated = !!localStorage.getItem("jwtToken");
-        if(isAuthenticated)
-        {
-        showProfileButton();
+        if (isAuthenticated) {
+            showProfileButton();
         }
 
-     else {
-        showLoginButton();
-        loadModal();
-    }
-        
+        else {
+            showLoginButton();
+            loadModal();
+        }
+
 
     }).catch(error => {
         console.error("Error loading header or navbar:", error);
@@ -153,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <li class="nav-item"><a href="/Bookshop-Website-main/HTML/events.html" class="nav-link">Events</a></li>
             `;
             }
-             else if (currentPage.includes("admin.html")) {
+            else if (currentPage.includes("admin.html")) {
                 linksHTML = `
                 <li class="nav-item"><a href="/Bookshop-Website-main/HTML/browser_index.html" class="nav-link dropdown-toggle">Browse Books</a>
                 <ul class="dropdown-menu">
@@ -168,10 +167,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 <li class="nav-item"><a href="/Bookshop-Website-main/HTML/events.html" class="nav-link">Events</a></li>
                 <li class="nav-item"><a href="/Bookshop-Website-main/HTML/funcorner.html" class="nav-link">Fun Nook</a></li>
             `;
-            
+
+            }
+            navLinksContainer.innerHTML = linksHTML;
         }
-        navLinksContainer.innerHTML = linksHTML;
-    }
     }
 
     /* Setup Dropdown Functionality*/
@@ -260,20 +259,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-
-    createModal();
-    const profileIcon = document.querySelector('#profile'); // Adjust this as needed
-    if (profileIcon) {
-        profileIcon.addEventListener('click', showModal);
-    }
-
-});
-
-// Function to create and show the login modal
+// Function to show the modal
 function showModal() {
-    // Check if modal already exists
     if (!document.querySelector('.modal-backdrop')) {
-        createModal();  // Only create modal once
+        createModal(); // Create modal only if it does not exist
     }
 
     // Show modal and backdrop
@@ -293,8 +282,8 @@ function createModal() {
         <span class="close-btn">&times;</span>
         <h3>Login to an account to access your profile</h3>
         <form id="loginForm">
-            <input type="text" id="loginEmail" placeholder="Email" required>
-            <input type="password" id="loginPassword" placeholder="Password" required>
+            <input type="text" id="userName" placeholder="Enter your username" required> 
+            <input type="password" id="userPassword" placeholder="Enter your password" required> 
             <button type="submit">Login</button>
             <p>Don't have an account? <span class="switch-link" onclick="showRegisterForm()">Register here</span></p>
         </form>
@@ -311,54 +300,45 @@ function createModal() {
     // Handle form submission
     document.getElementById('loginForm').addEventListener('submit', function (e) {
         e.preventDefault();
-        handleLogin();
+        handleLogin();  // Call login function on form submit
     });
 }
 
-// Function to switch to the registration form
-function showRegisterForm() {
-    const modalContainer = document.querySelector('.modal-container');
-    modalContainer.innerHTML = `
-        <span class="close-btn">&times;</span>
-        <h3>Register</h3>
-        <form id="registerForm">
-            <input type="text" id="registerName" placeholder="Full Name" required>
-            <input type="text" id="registerEmail" placeholder="Email" required>
-            <input type="password" id="registerPassword" placeholder="Password" required>
-            <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
-            <button type="submit">Register</button>
-            <p>Already have an account? <span class="switch-link" onclick="showLoginForm()">Login here</span></p>
-        </form>
-    `;
+// Function to handle login form submission
+async function handleLogin() {
+    const username = document.getElementById('userName').value;
+    const password = document.getElementById('userPassword').value;
 
-    // Add event listeners for new form
-    document.querySelector('.close-btn').addEventListener('click', closeModal);
-    document.getElementById('registerForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-        handleRegister();
-    });
-}
+    const loginData = {
+        identifier: username,  
+        password: password,
+    };
 
-// Function to switch back to the login form
-function showLoginForm() {
-    const modalContainer = document.querySelector('.modal-container');
-    modalContainer.innerHTML = `
-        <span class="close-btn">&times;</span>
-        <h3>Login to an account to access your profile</h3>
-        <form id="loginForm">
-            <input type="text" id="loginEmail" placeholder="Email" required>
-            <input type="password" id="loginPassword" placeholder="Password" required>
-            <button type="submit">Login</button>
-            <p>Don't have an account? <span class="switch-link" onclick="showRegisterForm()">Register here</span></p>
-        </form>
-    `;
+    try {
+        const response = await fetch('http://localhost:5258/api/Auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(loginData),
+        });
 
-    // Add event listeners for new form
-    document.querySelector('.close-btn').addEventListener('click', closeModal);
-    document.getElementById('loginForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-        handleLogin();
-    });
+        const data = await response.json();
+
+        if (response.ok) {
+            const token = data.token;
+            // Store the token in localStorage or sessionStorage
+            localStorage.setItem('jwtToken', token);
+            // Close the modal and reload the page
+            closeModal();
+            window.location.reload();  // Refresh the page to show profile button
+        } else {
+            alert(data.message || 'Login failed!');
+        }
+    } catch (error) {
+        console.error('Error during login:', error);
+        alert('An error occurred during login.');
+    }
 }
 
 // Function to close modal
@@ -371,111 +351,48 @@ function closeModal() {
     modalContainer.remove();
 }
 
-// Handle login form submission
-// Function to handle login form submission
-async function handleLogin() {
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
-    console.log('Hello');
-    const loginData = {
-    identifier: email,  // Send email or username (identifier)
-    password: password,
-    rememberMe: false  // Optional: Handle if you want to implement "Remember Me"
-                    };
-try {
-    const response = await fetch('https://localhost:7221/api/Auth/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(loginData)
-    });
-    const data = await response.json();
-    if (response.ok) {
-        // Assuming the token is returned in the response as 'data.token' (adjust as per your backend response)
-        const token = data.token;
-        // Store the token in localStorage or sessionStorage (depends on your use case)
-        localStorage.setItem('jwtToken', token);
-        // alert('Login Successful!');
-        closeModal();
-        window.location.href = window.location.href;  // Close the modal after successful login
-    } else {
-        alert(data.message || 'Login failed!');
-    }
-} catch (error) {
-    console.error('Error during login:', error);
-    alert('An error occurred during login.');
-}
+// Show login button and hide profile button
+function showLoginButton() {
+    document.getElementById('login').style.display = 'block';
+    document.getElementById('profile').style.display = 'none';
+    document.getElementById('logout').style.display = 'none';  // Hide logout button
 }
 
-
-// Handle registration form submission
-function handleRegister() {
-    const name = document.getElementById('registerName').value;
-    const email = document.getElementById('registerEmail').value;
-    const password = document.getElementById('registerPassword').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
-
-    if (password !== confirmPassword) {
-        alert('Passwords do not match!');
-        return;
-    }
-
-    console.log('Registering with:', name, email, password);
-    alert('Registration Successful!');
-    closeModal();
+// Show profile button and hide login button
+function showProfileButton() {
+    document.getElementById('login').style.display = 'none';
+    document.getElementById('profile').style.display = 'block';
+    document.getElementById('logout').style.display = 'block';  // Show logout button
 }
 
-    /*Check if the user is logged in (replace with your actual login check)
-    const isLoggedIn = checkLoginStatus();
-    if (isLoggedIn) {
-        showProfileButton();
-    } else {
-        showLoginButton();
-    }*/
-
-    // Function to check if the user is logged in (se di si mund tfunx u figure it out)
-
-
-    // Function to show the login button and hide the profile button
-    function showLoginButton() {
-        document.getElementById('login').style.display = 'block';
-        document.getElementById('profile').style.display = 'none';
+// Function to handle logout
+function handleLogout() {
+    const confirmation = confirm("Are you sure you want to log out?");
+    if (confirmation) {
+        // Remove the JWT token
+        localStorage.removeItem('jwtToken');
+        
+        // Redirect to the homepage
+        window.location.href = '/Bookshop-Website-main/HTML/homepage_index.html';  // Redirect to homepage
     }
+}
 
-    // Function to show the profile button and hide the login button
-    function showProfileButton() {
-        document.getElementById('login').style.display = 'none';
-        document.getElementById('profile').style.display = 'block';
-    }
-
-    // // Simulate the login action 
-    // function handleLogin(token) {
-    //     // Save token to localStorage (or wherever you're storing authentication data)
-    //     localStorage.setItem('userToken', token);
-
-    //     // After login, update the UI
-    //     showProfileButton();
-    // }
-
-    // // Add a logout functionality to clear the login status (optional)
-    // function handleLogout() {
-    //     // Clear the token from localStorage
-    //     localStorage.removeItem('userToken');
-
-    //     // Show login button again
-    //     showLoginButton();
-    // }
-
-
-
-
+// Load the modal and manage login/logout state on page load
 function loadModal() {
-    createModal();
+    // Add the event listener for login button to open the modal
+    document.getElementById('login').addEventListener('click', showModal);
 
-    const profileIcon = document.querySelector('#login');
-    console.log(profileIcon);// Adjust this as needed
-    if (profileIcon) {
-        profileIcon.addEventListener('click', showModal);
+    // Check if the user is logged in and update the UI accordingly
+    if (localStorage.getItem('jwtToken')) {
+        showProfileButton();  // Show profile and logout if logged in
+    } else {
+        showLoginButton();  // Show login button if not logged in
     }
+
+    // Add event listener to the logout button
+    document.getElementById('logout').addEventListener('click', handleLogout);
 }
+
+// Initialize modal and buttons when the page loads
+window.onload = loadModal;
+});
