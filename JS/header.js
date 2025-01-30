@@ -5,7 +5,18 @@ document.addEventListener('DOMContentLoaded', function () {
         loadHTML("/Bookshop-Website-main/HTML/nav.html", "navbar", setupNavbar)
     ]).then(() => {
         // After both HTML parts are loaded, execute loadModal
+        isAuthenticated = !!localStorage.getItem("jwtToken");
+        if(isAuthenticated)
+        {
+        showProfileButton();
+        }
+
+     else {
+        showLoginButton();
         loadModal();
+    }
+        
+
     }).catch(error => {
         console.error("Error loading header or navbar:", error);
     });
@@ -142,9 +153,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 <li class="nav-item"><a href="/Bookshop-Website-main/HTML/events.html" class="nav-link">Events</a></li>
             `;
             }
-            navLinksContainer.innerHTML = linksHTML;
+             else if (currentPage.includes("admin.html")) {
+                linksHTML = `
+                <li class="nav-item"><a href="/Bookshop-Website-main/HTML/browser_index.html" class="nav-link dropdown-toggle">Browse Books</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/Bookshop-Website-main/HTML/browser_index.html?genre=fiction" class="dropdown-item">Fiction</a></li>
+                    <li><a href="/Bookshop-Website-main/HTML/browser_index.html?genre=non-fiction" class="dropdown-item">Non-Fiction</a></li>
+                    <li><a href="/Bookshop-Website-main/HTML/browser_index.html?genre=graphic-novels" class="dropdown-item">Graphic Novels</a></li>
+                    <li><a href="/Bookshop-Website-main/HTML/browser_index.html?genre=childrens-books" class="dropdown-item">Children's Books</a></li>
+                </ul>
+                </li>
+                <li class="nav-item"><a href="/Bookshop-Website-main/HTML/specialpicks.html" class="nav-link">Special Picks</a></li>
+                <li class="nav-item"><a href="/Bookshop-Website-main/Footer_Files/gift.html" class="nav-link">Gifts and Accessories</a></li>
+                <li class="nav-item"><a href="/Bookshop-Website-main/HTML/events.html" class="nav-link">Events</a></li>
+                <li class="nav-item"><a href="/Bookshop-Website-main/HTML/funcorner.html" class="nav-link">Fun Nook</a></li>
+            `;
+            
         }
-
+        navLinksContainer.innerHTML = linksHTML;
+    }
     }
 
     /* Setup Dropdown Functionality*/
@@ -349,35 +376,38 @@ function closeModal() {
 async function handleLogin() {
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
-
+    console.log('Hello');
     const loginData = {
-        identifier: email,  // Send email or username (identifier)
-        password: password,
-        rememberMe: false  // Optional: Handle if you want to implement "Remember Me"
-    };
-
-    try {
-        const response = await fetch('https://localhost:7221/api/Auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(loginData)
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            alert('Login Successful!');
-            closeModal();  // Close the modal after successful login
-        } else {
-            alert(data || 'Login failed!');
-        }
-    } catch (error) {
-        console.error('Error during login:', error);
-        alert('An error occurred during login.');
+    identifier: email,  // Send email or username (identifier)
+    password: password,
+    rememberMe: false  // Optional: Handle if you want to implement "Remember Me"
+                    };
+try {
+    const response = await fetch('https://localhost:7221/api/Auth/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(loginData)
+    });
+    const data = await response.json();
+    if (response.ok) {
+        // Assuming the token is returned in the response as 'data.token' (adjust as per your backend response)
+        const token = data.token;
+        // Store the token in localStorage or sessionStorage (depends on your use case)
+        localStorage.setItem('jwtToken', token);
+        // alert('Login Successful!');
+        closeModal();
+        window.location.href = window.location.href;  // Close the modal after successful login
+    } else {
+        alert(data.message || 'Login failed!');
     }
+} catch (error) {
+    console.error('Error during login:', error);
+    alert('An error occurred during login.');
 }
+}
+
 
 // Handle registration form submission
 function handleRegister() {
@@ -419,23 +449,23 @@ function handleRegister() {
         document.getElementById('profile').style.display = 'block';
     }
 
-    // Simulate the login action 
-    function handleLogin(token) {
-        // Save token to localStorage (or wherever you're storing authentication data)
-        localStorage.setItem('userToken', token);
+    // // Simulate the login action 
+    // function handleLogin(token) {
+    //     // Save token to localStorage (or wherever you're storing authentication data)
+    //     localStorage.setItem('userToken', token);
 
-        // After login, update the UI
-        showProfileButton();
-    }
+    //     // After login, update the UI
+    //     showProfileButton();
+    // }
 
-    // Add a logout functionality to clear the login status (optional)
-    function handleLogout() {
-        // Clear the token from localStorage
-        localStorage.removeItem('userToken');
+    // // Add a logout functionality to clear the login status (optional)
+    // function handleLogout() {
+    //     // Clear the token from localStorage
+    //     localStorage.removeItem('userToken');
 
-        // Show login button again
-        showLoginButton();
-    }
+    //     // Show login button again
+    //     showLoginButton();
+    // }
 
 
 

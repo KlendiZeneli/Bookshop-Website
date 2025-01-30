@@ -1,10 +1,62 @@
-function addToCart(bookTitle) {
-  console.log(`${bookTitle} added to cart`); // Placeholder for adding logic
-  alert(`${bookTitle} has been added to your cart!`);
-  
-  // Navigate to the Cart page
-  window.location.href = "/Bookshop-Website-main/HTML/cart.html"; // Replace with your actual cart page URL
+async function addToCart(bookTitle) {
+  try {
+      // Fetch book details from API
+      const response = await fetch(`https://localhost:7221/api/BookFilters/get-by-title/${encodeURIComponent(bookTitle)}`);
+      
+      if (!response.ok) {
+          alert("Book not found.");
+          return;
+      }
+
+      const book = await response.json();
+
+      // Retrieve the cart from localStorage and parse it, or initialize an empty array
+      let cart = JSON.parse(localStorage.getItem('Cart')) || [];
+
+      console.log("Current cart:", cart); // Debugging: See the current cart contents
+
+      // Check if the book is already in the cart by comparing the book id
+      let existingItem = cart.find(item => item.isbn === book.isbn); // Use ISBN instead of id, as ISBN should be unique
+
+      if (existingItem) {
+          // If the book is already in the cart, check if the quantity is within stock limits
+          if (existingItem.quantity < existingItem.quantityInStock) {
+              existingItem.quantity += 1; // Increase the quantity
+          } else {
+              alert("Cannot add more, stock limit reached.");
+              return;
+          }
+      } else {
+          // If the book is not in the cart, add the book to the cart
+          cart.push({
+              isbn: book.isbn,
+              title: book.title,
+              author: book.author,
+              price: book.price,
+              coverURL: book.coverURL, // ✅ Now includes cover image URL
+              quantity: 1, // Initially, quantity is 1
+              quantityInStock: book.quantityInStock // Ensure backend provides this
+          });
+      }
+
+      console.log("Updated cart:", cart); // Debugging: See the updated cart contents
+
+      // Save the updated cart back to localStorage
+      localStorage.setItem('Cart', JSON.stringify(cart));
+
+      alert(`${book.title} has been added to your cart!`);
+
+      // Navigate to the Cart page
+      window.location.href = "/Bookshop-Website-main/HTML/cart.html"; // Replace with your actual cart page URL
+
+  } catch (error) {
+      console.error("Error adding book to cart:", error);
+      alert("An error occurred while adding the book to your cart.");
+  }
 }
+
+
+
 
 function addToWishlist(bookTitle) {
   console.log(`${bookTitle} added to wishlist`); // Placeholder for adding logic
@@ -110,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const booksPerPage = 12;
 
   function fetchBooks() {
-    return fetch('/Bookshop-Website-main/HTML/bookarray.json')
+    return fetch('https://localhost:7221/api/BookFilters/all')
       .then((response) => {
         if (!response.ok) {
           throw new Error(`Failed to fetch data: ${response.status}`);
@@ -139,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const bookCard = document.createElement("div");
       bookCard.className = "book-card";
       bookCard.innerHTML = `
-        <img src="${book.image}" alt="${book.title}" class="book-cover">
+        <img src="${book.coverURL}" alt="${book.title}" class="book-cover">
         <div class="book-info">
             <h3 class="book-title">${book.title}</h3>
             <p class="book-author">${book.author || "Unknown"}</p>
