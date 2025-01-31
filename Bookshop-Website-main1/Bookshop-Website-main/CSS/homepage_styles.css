@@ -1,0 +1,413 @@
+/*-------------------- Banner styling -------------------- */
+.banner-container {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    margin-bottom: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+
+/*-------------------- Welcome container styling -------------------- */
+.welcome-container {
+    background: linear-gradient(135deg, #889063, #485D1A);
+    color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    padding: 32px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.welcome-container {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.welcome-container h2 {
+    font-family: 'Glass Antiqua', cursive;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--dropdown-text-color);
+}
+
+.welcome-container h2 {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.welcome-container h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 2px;
+    background-color: var(--dropdown-text-color);
+}
+
+.welcome-container p {
+    font-family: 'Averia Serif Libre', serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.welcome-container p:last-child {
+    margin-bottom: 0;
+}
+
+
+
+
+/*-------------------- Author Nook Styling -------------------- */
+.title-nook-container {
+    font-family: 'Glass Antiqua', cursive;
+    color: var(--section-title-color);
+    font-size: 2rem;
+    margin-bottom: 1px;
+}
+
+.nook-container {
+    background: var(--author-nook-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+
+}
+
+.cards-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.card .glass {
+    position: relative;
+    width: 180px;
+    height: 200px;
+    background: linear-gradient(#976646, #8B5633);
+    border: none;
+    box-shadow: 0 25px 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    border-radius: 10px;
+    margin: 0 -45px;
+    overflow: hidden;
+}
+
+.card .glass img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.card .glass .card-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background: var(--section-title-color);
+    font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
+    color: #ffffff;
+    text-align: center;
+    transition: 0.5s;
+    transform: translateY(100%);
+}
+
+.card .glass:hover .card-text {
+    transform: translateY(0);
+}
+
+.glass-1 {
+    transform: rotate(-15deg);
+}
+
+.glass-2 {
+    transform: rotate(5deg);
+}
+
+.glass-3 {
+    transform: rotate(25deg);
+}
+
+.cards-container:hover .glass {
+    transform: rotate(0deg);
+    margin: 0 10px;
+}
+
+.nook-content {
+    padding-left: 50px;
+}
+
+.nook-content h3 {
+    font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
+    color: #ffffff;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.nook-content p {
+    font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.learn-more {
+    background: var(--section-title-color);
+    border: none;
+    border-radius: 0 0 8px 8px;
+    padding: 0.8rem 1.5rem;
+    font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.learn-more:hover {
+    background-color: var(--items-button-hover);
+}
+
+
+
+
+/*----------------- Book carousel styling -----------------*/
+.new-releases-container {
+    font-family: 'Glass Antiqua', cursive;
+    color: #8B5633;
+    font-size: 2rem;
+    margin-bottom: 1px;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 1px auto 40px;
+    overflow: hidden;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+    gap: 10px; /* Add space between items */
+}
+
+.book-card {
+    background-color: var(--author-nook-bg);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 300px; /* Set width to 300px */
+    height: 350px; /* Set height to 350px */
+    flex-shrink: 0; /* Prevent the card from shrinking */
+}
+
+.book-card:hover {
+    transform: scale(1.05);
+}
+
+.book-cover {
+    width: 100%;
+    height: 55%;
+    object-fit: cover;
+}
+
+.book-title {
+    font-size: 1rem;
+    font-family: 'Glass Antiqua', cursive;
+    font-weight: bold;
+    margin: 0.2rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.book-info {
+    padding: 0.3rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.book-author,
+.book-price {
+    font-size: 0.8rem;
+    font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
+    margin: 0.1rem 0;
+    color: #555;
+}
+
+.book-actions {
+    display: flex;
+    height: 15%;
+}
+
+.add-to-cart,
+.wishlist {
+    flex: 1;
+    padding: 0.4rem;
+    background-color: var(--section-title-color);
+    font-family: 'Hazel', 'Averia Serif Libre', sans-serif;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.add-to-cart:hover {
+    background-color: var(--items-button-hover);
+}
+
+.wishlist {
+    background-color: var(--tertiary-bg);
+}
+
+.wishlist:hover {
+    background-color: var(--hover-bg);
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.8;
+    background-color: #8B5633;
+    border: none;
+    font-size: 24px;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.carousel-button.prev {
+    border-radius: 0 20px 20px 0;
+    left: 10px;
+}
+
+.carousel-button.next {
+    border-radius: 20px 0 0 20px;
+    right: 10px;
+}
+
+i {
+    color: #ffffff;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+
+/*-------------------- Footer styling -------------------- */
+footer {
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    text-align: center;
+    padding: 20px 0;
+}
+
+
+
+
+
+/*--------------------------- Mobile devices styling -----------------------------------*/
+@media (max-width: 768px) {
+
+    .welcome-container {
+        padding: 20px;
+    }
+
+    .welcome-container h2 {
+        font-size: 1.25rem;
+    }
+
+    .welcome-container p {
+        font-size: 0.9rem;
+    }
+
+    .nook-container {
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .cards-container {
+        justify-content: space-around;
+        gap: 1rem;
+    }
+
+    .card .glass {
+        width: 140px;
+        height: 160px;
+    }
+
+    .nook-content {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .nook-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .nook-content p {
+        font-size: 1rem;
+    }
+
+    .learn-more {
+        width: 100%;
+        padding: 0.7rem;
+    }
+
+}

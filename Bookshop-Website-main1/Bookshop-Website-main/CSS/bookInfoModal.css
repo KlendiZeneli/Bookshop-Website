@@ -1,0 +1,121 @@
+/* Import Font */
+@import url('https://fonts.googleapis.com/css2?family=Glass+Antiqua&display=swap');
+
+/* Modal Backdrop */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    display: none; /* Hidden by default */
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #EDDDC4;
+    background-image: linear-gradient(-225deg, var(--secondary-bg) 50%, var(--main-bg) 50%);
+    padding: 30px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 600px; /* Increased width */
+    height: 400px; /* Increased height */
+    text-align: left;
+    border-radius: 10px;
+    font-family: 'Glass Antiqua', cursive; /* Apply font */
+    color: #283618; /* Apply text color */
+    display: flex;
+    flex-direction: row; /* Horizontal layout */
+    align-items: center;
+}
+
+/* Close Button */
+.close-modal {
+    position: absolute;
+    top: 0px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 40px;
+    font-weight: bold;
+    color: #888;
+    transition: color 0.3s;
+    font-family: 'Glass Antiqua', cursive; /* Apply font */
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+/* Book Info Section (Left Side) */
+.modal-book-info {
+    flex: 1; /* Take up remaining space */
+    display:flex;
+    flex-direction: column;  /*Vertical layout */
+    padding-right: 30px; /* Space between text and image */
+    text-align: center;
+    gap: 0; /* Remove space between elements */
+}
+
+/* Book Info (Author, Language, Genre, Published, etc.) */
+.modal-book-info p {
+    margin: 3px; /* Remove margin around paragraphs */
+    font-size: 18px; /* Adjust font size if needed */
+    color: #283618; /* Apply color */
+    font-family: 'Glass Antiqua', cursive; /* Apply font */
+    text-align: left; /* Align text to the left */
+    padding-bottom: 0px;
+}
+
+/* Book Cover Image (Right Side) */
+.modal-book-cover {
+    width: 250px; /* Increased image width */
+    height: 375px; /* Increased image height */
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Book Title */
+#modal-book-title {
+    font-size: 30px; /* Increased font size */
+    margin-bottom: 0px; /* Optional small margin */
+    font-weight: bold;
+    color: #283618; /* Apply color */
+    font-family: 'Glass Antiqua', cursive; /* Apply font */
+    text-align: center; /* Center title horizontally */
+}
+
+/* Book Author */
+#modal-book-author {
+    font-size: 22px; /* Increased font size */
+    color: #283618; /* Apply color */
+    font-family: 'Glass Antiqua', cursive; /* Apply font */
+    text-align: center; /* Center author name horizontally */
+}
+
+/* Book Price */
+#modal-book-price {
+    font-size: 24px; /* Increased font size */
+    font-weight: bold;
+    color: #283618; /* Apply color */
+    font-family: 'Glass Antiqua', cursive; /* Apply font */
+    text-align: center; /* Center price horizontally */
+}
+
+/* Book Description */
+.modal-book-description {
+    font-size: 18px; /* Increased font size */
+    color: #283618; /* Apply color */
+    line-height: 1.5;
+    font-family: 'Glass Antiqua', cursive; /* Apply font */
+    text-align: center;
+    max-width: 200px;
+    word-wrap:break-word;
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore Admin</title>
+    <link rel="stylesheet" href="/Bookshop-Website-main/CSS/admin.css">
+    <link rel="stylesheet" href="/Bookshop-Website-main/CSS/common_styles.css">
+</head>
+
+<body>
+    <div id="header"></div>
+    <div class="book-controls">
+        <h3>Book Management</h3>
+        <div class="controls">
+            <button id="addbtn" onclick="showForm('add')">Add New Book</button>
+            <button id="editbtn" onclick="showForm('edit')">Edit Book</button>
+            <button id="deletebtn" onclick="showForm('delete')">Delete Book</button>
+        </div>
+
+        <!-- Add/Edit Book Form -->
+        <div id="bookForm" class="form-section">
+            <form id="bookFormData">
+                <h3 id="formTitle">Edit Book</h3>
+                <input type="hidden" id="bookId">
+
+                <div class="form-grid">
+                    <input type="text" id="ISBN" name="ISBN" placeholder="ISBN" readonly>
+                    <input type="text" id="title" name="Title" placeholder="Book Title" required>
+                    <input type="text" id="description" name="Description" placeholder="Description">
+                    <input type="text" id="language" name="Language" placeholder="Language" required>
+                    <input type="text" id="author" name="Author" placeholder="Author" required>
+                    <input type="number" id="noOfPages" name="NoOfPages" placeholder="Number of Pages" required>
+                    <input type="number" id="price" name="Price" placeholder="Price" step="0.01" required>
+                    <input type="text" id="coverURL" name="CoverURL" placeholder="Cover URL">
+                    <input type="text" id="genre" name="Genre" placeholder="Genre" required>
+                    <input type="text" id="subGenre" name="SubGenre" placeholder="Sub-Genre">
+                    <input type="text" id="publisher" name="Publisher" placeholder="Publisher" required>
+                    <input type="datetime-local" id="publishingDate" name="PublishingDate" placeholder="Publishing Date"
+                        required>
+                    <label for="newArrival">New Arrival:</label>
+                    <input type="checkbox" id="newArrival" name="NewArrival">
+                    <label for="awardWinner">Award Winner:</label>
+                    <input type="checkbox" id="awardWinner" name="AwardWinner">
+                    <label for="bestSeller">Best Seller:</label>
+                    <input type="checkbox" id="bestSeller" name="BestSeller">
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit">Save Book</button>
+                    <button type="button" onclick="hideForms()">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- ISBN Input Form -->
+        <div id="isbnForm" class="form-section">
+            <form id="isbnInputForm">
+                <h3>Enter ISBN</h3>
+                <input type="text" id="isbnInput" placeholder="Enter ISBN" required>
+                <div class="form-actions">
+                    <button type="submit">Submit</button>
+                    <button type="button" onclick="hideForms()">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Delete Confirmation -->
+        <div id="deleteConfirmation" class="form-section">
+            <h3>Confirm Deletion</h3>
+            <p id="bookDetails"></p>
+            <button onclick="confirmDelete()">Confirm Delete</button>
+            <button onclick="hideForms()">Cancel</button>
+        </div>
+    </div>
+
+
+    <div class="user-controls">
+        <h2>User Management</h2>
+    
+        <!-- User Table -->
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody id="usersList">
+                <!-- Users will be dynamically inserted here -->
+            </tbody>
+        </table>
+    
+        <!-- Update Users Button -->
+        
+        <!-- User Editing Section (Hidden by Default) -->
+        <div class="user-edit-form" style="display: none;">
+            <h3>Edit Selected User</h3>
+    
+            <input type="hidden" id="userId">
+    
+            <div class="form-group">
+                <label for="userName" class="form-label">User Name</label>
+                <input type="text" class="form-control" id="userName">
+            </div>
+    
+            <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" id="email">
+            </div>
+    
+            <div class="form-group">
+                <label for="userRole" class="form-label">Role</label>
+                <select class="form-control" id="userRole">
+                    <option value="">Select Role</option>
+                    <!-- Roles will be dynamically inserted here -->
+                </select>
+            </div>
+    
+            <div class="form-actions">
+                <button id="saveBtn" class="btn-success">Save Changes</button>
+                <button id="deleteBtn" class="btn-danger">Remove Role</button>
+            </div>
+        </div>
+    </div>>
+  
+    
+    <div id="footer"></div>
+    <script src="/Bookshop-Website-main/JS/header.js"></script>
+    <script src="/Bookshop-Website-main/JS/admin.js"></script>
+    <script src="/Bookshop-Website-main/JS/footer.js"></script>
+</body>
+</html>
